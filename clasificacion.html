@@ -6,10 +6,17 @@
     <title>P.E.P. - Estadísticas</title>
     <style>
         :root { 
-            --azul-principal: #004696; 
-            --azul-oscuro: #002d62; 
+            --azul-principal: #0d6efd; 
+            --azul-oscuro: #0a192f; 
+            --azul-marino: #1e293b;
+            --azul-light: #eef6ff;
+            --dorado: #ffc107;
+            --plata: #94a3b8;
+            --bronce: #d97706;
             --blanco: #ffffff; 
-            --gris-claro: #f4f6f9; 
+            --gris-fondo: #f1f5f9; 
+            --gris-borde: #e2e8f0;
+            --texto-oscuro: #0f172a;
         }
 
         * { 
@@ -20,13 +27,16 @@
         }
 
         body { 
-            background-color: var(--gris-claro); 
-            color: #333; 
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); 
+            color: var(--texto-oscuro); 
             line-height: 1.6; 
+            min-height: 100vh;
         }
 
+        /* HEADER */
         header { 
-            background-color: var(--blanco); 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px);
             border-bottom: 3px solid var(--azul-principal); 
             padding: 0.8rem 5%; 
             display: flex; 
@@ -35,6 +45,7 @@
             position: sticky; 
             top: 0; 
             z-index: 100; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
 
         .logo-container { 
@@ -53,80 +64,237 @@
             color: var(--azul-oscuro); 
             text-decoration: none; 
             margin-left: 20px; 
-            font-weight: 600; 
+            font-weight: 700; 
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 6px;
         }
 
-        nav a.active { 
+        nav a.active, nav a:hover { 
             color: var(--azul-principal); 
-            border-bottom: 2px solid var(--azul-principal); 
+            background: var(--azul-light);
         }
 
         .container { 
-            max-width: 1100px; 
-            margin: 3rem auto; 
+            max-width: 1250px; 
+            margin: 2.5rem auto; 
             padding: 0 20px; 
-            min-height: calc(100vh - 230px); 
         }
 
+        /* STATS GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: var(--blanco);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, #0d6efd, #00d2ff);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(13, 110, 253, 0.12);
+        }
+
+        .stat-number {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0a192f, #0d6efd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* CARD TABLA */
         .card { 
             background: var(--blanco); 
-            padding: 2.5rem; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-            margin-bottom: 2rem;
+            padding: 2rem; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.04); 
+            border: 1px solid var(--gris-borde);
             overflow-x: auto;
         }
 
-        .card h2 { 
-            color: var(--azul-principal); 
-            margin-bottom: 1.2rem; 
-            border-bottom: 2px solid var(--gris-claro); 
-            padding-bottom: 0.5rem; 
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--gris-fondo);
         }
 
+        .card h2 { 
+            color: var(--azul-oscuro); 
+            font-size: 1.6rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* TABLA MODERNA */
         .tabla-torneo {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .tabla-torneo th, .tabla-torneo td {
-            padding: 10px 8px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            font-size: 0.92rem;
         }
 
         .tabla-torneo th {
-            background-color: var(--azul-principal);
+            background-color: var(--azul-oscuro);
             color: var(--blanco);
+            padding: 16px 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            border: none;
         }
 
-        .tabla-torneo tr:nth-child(even) {
-            background-color: var(--gris-claro);
+        .tabla-torneo th:first-child { border-radius: 12px 0 0 12px; }
+        .tabla-torneo th:last-child { border-radius: 0 12px 12px 0; }
+
+        .tabla-torneo tbody tr {
+            background-color: var(--blanco);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: all 0.25 ease;
+            border-radius: 10px;
+        }
+
+        .tabla-torneo tbody tr:hover {
+            background-color: var(--azul-light);
+            transform: scale(1.008);
+            box-shadow: 0 6px 15px rgba(13, 110, 253, 0.08);
+        }
+
+        .tabla-torneo td {
+            padding: 14px 10px;
+            text-align: center;
+            border-top: 1px solid var(--gris-borde);
+            border-bottom: 1px solid var(--gris-borde);
+            vertical-align: middle;
+        }
+
+        .tabla-torneo td:first-child {
+            border-left: 1px solid var(--gris-borde);
+            border-radius: 10px 0 0 10px;
+        }
+
+        .tabla-torneo td:last-child {
+            border-right: 1px solid var(--gris-borde);
+            border-radius: 0 10px 10px 0;
         }
 
         .jugador-nombre {
             text-align: left !important;
+            font-weight: 700;
+            color: var(--azul-oscuro);
+            font-size: 0.98rem;
+        }
+
+        /* BADGES */
+        .badge-elo {
+            background: linear-gradient(135deg, #0d6efd, #0056b3);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            display: inline-block;
+            box-shadow: 0 3px 8px rgba(13, 110, 253, 0.3);
+        }
+
+        .top-1 {
+            background: linear-gradient(135deg, #ffe066, #ffc107);
+            color: #5c4000;
+            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
+        }
+
+        .top-2 {
+            background: linear-gradient(135deg, #e2e8f0, #94a3b8);
+            color: #1e293b;
+            box-shadow: 0 4px 12px rgba(148, 163, 184, 0.3);
+        }
+
+        .top-3 {
+            background: linear-gradient(135deg, #fcd34d, #d97706);
+            color: #451a03;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+        }
+
+        .badge-grado {
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            border: 1px solid #cbd5e1;
+        }
+
+        .apertura-tag {
+            background: #ffffff;
+            color: #1e293b;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
             font-weight: 600;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+            display: inline-block;
         }
 
         .btn-perfil {
-            color: var(--azul-principal);
+            display: inline-block;
+            background: linear-gradient(135deg, #0d6efd, #0a58ca);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 8px rgba(13, 110, 253, 0.2);
         }
 
         .btn-perfil:hover {
-            text-decoration: underline;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(13, 110, 253, 0.4);
         }
 
         footer { 
             text-align: center; 
-            padding: 1.5rem; 
+            padding: 2rem; 
             background-color: var(--azul-oscuro); 
             color: var(--blanco); 
             font-size: 0.9rem; 
+            margin-top: 3rem;
         }
     </style>
 </head>
@@ -147,9 +315,33 @@
     </header>
 
     <div class="container">
+
+        <!-- RESUMEN EN TARJETAS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Jugadores Activos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">963</div>
+                <div class="stat-label">Máximo Elo (Joaquín)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Partidas Amistosas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3A / 3E</div>
+                <div class="stat-label">Aulas Líderes</div>
+            </div>
+        </div>
         
+        <!-- TABLA -->
         <section class="card">
-            2 Estructura y Estadísticas del Equipo - SDA
+            <div class="card-header">
+                <h2>♟️ Tabla General de Jugadores - SDA</h2>
+            </div>
+
             <table class="tabla-torneo">
                 <thead>
                     <tr>
@@ -162,162 +354,162 @@
                         <th>Grado</th>
                         <th>Apertura (Blancas)</th>
                         <th>Apertura (Negras)</th>
-                        <th>User</th>
+                        <th>Chess.com</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="jugador-nombre">Joaquín Arias</td>
-                        <td><strong>963</strong></td>
+                        <td class="jugador-nombre">🥇 Joaquín Arias</td>
+                        <td><span class="badge-elo top-1">963</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>3E</td>
-                        <td>Apertura Italiana</td>
+                        <td><span class="badge-grado">3E</span></td>
+                        <td><span class="apertura-tag">Apertura Italiana</span></td>
                         <td>-</td>
                         <td><a href="https://www.chess.com/member/haros460" target="_blank" class="btn-perfil">Perfil</a></td>
                     </tr>
                     <tr>
-                        <td class="jugador-nombre">Jean Paul</td>
-                        <td><strong>673</strong></td>
-                        <td>3</td>
+                        <td class="jugador-nombre">🥈 Jean Paul</td>
+                        <td><span class="badge-elo top-2">673</span></td>
+                        <td><strong>3</strong></td>
                         <td>0</td>
                         <td>0</td>
                         <td>3</td>
-                        <td>3A</td>
-                        <td>Sistema Londres</td>
+                        <td><span class="badge-grado">3A</span></td>
+                        <td><span class="apertura-tag">Sistema Londres</span></td>
                         <td>-</td>
                         <td><a href="https://www.chess.com/member/jean-pauljll" target="_blank" class="btn-perfil">Perfil</a></td>
                     </tr>
                     <tr>
-                        <td class="jugador-nombre">Miguel Reyna</td>
-                        <td><strong>536</strong></td>
+                        <td class="jugador-nombre">🥉 Miguel Reyna</td>
+                        <td><span class="badge-elo top-3">536</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>3A</td>
-                        <td>Sistema Colle</td>
-                        <td>Defensa Siciliana</td>
+                        <td><span class="badge-grado">3A</span></td>
+                        <td><span class="apertura-tag">Sistema Colle</span></td>
+                        <td><span class="apertura-tag">Defensa Siciliana</span></td>
                         <td><a href="https://www.chess.com/member/miguel_r14" target="_blank" class="btn-perfil">Perfil</a></td>
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Alfredo Fortunic</td>
-                        <td><strong>434</strong></td>
-                        <td>1</td>
+                        <td><span class="badge-elo">434</span></td>
+                        <td><strong>1</strong></td>
                         <td>1</td>
                         <td>0</td>
                         <td>2</td>
-                        <td>3A</td>
-                        <td>Gambito de Dama</td>
-                        <td>Gambito Englund</td>
+                        <td><span class="badge-grado">3A</span></td>
+                        <td><span class="apertura-tag">Gambito de Dama</span></td>
+                        <td><span class="apertura-tag">Gambito Englund</span></td>
                         <td><a href="https://www.chess.com/member/alfreditoelmascapito" target="_blank" class="btn-perfil">Perfil</a></td>
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Leonel Chiguán</td>
-                        <td><strong>336</strong></td>
+                        <td><span class="badge-elo">336</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>3B</td>
+                        <td><span class="badge-grado">3B</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td><a href="https://www.chess.com/member/leochig" target="_blank" class="btn-perfil">Perfil</a></td>
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Jose Incio</td>
-                        <td><strong>288</strong></td>
+                        <td><span class="badge-elo">288</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>1D</td>
+                        <td><span class="badge-grado">1D</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td><a href="https://www.chess.com/member/josea2013" target="_blank" class="btn-perfil">Perfil</a></td>
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Mirko Pezoa</td>
-                        <td><strong>273</strong></td>
+                        <td><span class="badge-elo">273</span></td>
                         <td>0</td>
                         <td>3</td>
                         <td>0</td>
                         <td>3</td>
-                        <td>3D</td>
+                        <td><span class="badge-grado">3D</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td><a href="https://www.chess.com/member/mirkocamus" target="_blank" class="btn-perfil">Perfil</a></td>
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Nils Angeldonis</td>
-                        <td><strong>265</strong></td>
+                        <td><span class="badge-elo">265</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>3E</td>
+                        <td><span class="badge-grado">3E</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td><a href="https://www.chess.com/member/nils1714" target="_blank" class="btn-perfil">Perfil</a></td>
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Ariana Chupillón</td>
-                        <td><strong>263</strong></td>
-                        <td>1</td>
+                        <td><span class="badge-elo">263</span></td>
+                        <td><strong>1</strong></td>
                         <td>1</td>
                         <td>0</td>
                         <td>2</td>
-                        <td>3D</td>
+                        <td><span class="badge-grado">3D</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td><a href="https://www.chess.com/member/rojiari" target="_blank" class="btn-perfil">Perfil</a></td>
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Paolo Chávez</td>
-                        <td><strong>190</strong></td>
+                        <td><span class="badge-elo">190</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>3A</td>
+                        <td><span class="badge-grado">3A</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td><a href="https://www.chess.com/member/paolo1601" target="_blank" class="btn-perfil">Perfil</a></td>
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Valentino Carrasco</td>
-                        <td><strong>182</strong></td>
+                        <td><span class="badge-elo">182</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>3A</td>
+                        <td><span class="badge-grado">3A</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td><a href="https://www.chess.com/member/pateatherians3000" target="_blank" class="btn-perfil">Perfil</a></td>
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Nicól Cabezudo</td>
-                        <td><strong>103</strong></td>
+                        <td><span class="badge-elo">103</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>3A</td>
+                        <td><span class="badge-grado">3A</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Caetano Carranza</td>
-                        <td><em>(En clasificación)</em></td>
+                        <td><em>(Clasificando)</em></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>3C</td>
+                        <td><span class="badge-grado">3C</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td><a href="https://www.chess.com/member/pokemonfanchess" target="_blank" class="btn-perfil">Perfil</a></td>
@@ -329,19 +521,19 @@
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>3D</td>
+                        <td><span class="badge-grado">3D</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Adrián Villegas</td>
-                        <td><em>(En clasificación)</em></td>
+                        <td><em>(Clasificando)</em></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>2A</td>
+                        <td><span class="badge-grado">2A</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
