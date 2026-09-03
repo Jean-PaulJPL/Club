@@ -3,108 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P.E.P. - Torneo</title>
+    <title>Torneo - Club P.E.P.</title>
     <style>
         :root { 
-            --azul-principal: #004696; 
-            --azul-oscuro: #002d62; 
+            --azul-principal: #0d6efd; 
+            --azul-oscuro: #060d19; 
+            --azul-light: #eef6ff;
             --blanco: #ffffff; 
-            --gris-claro: #f4f6f9; 
+            --gris-borde: #e2e8f0;
+            --texto-oscuro: #0f172a;
         }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-        }
-
-        body { 
-            background-color: var(--gris-claro); 
-            color: #333; 
-            line-height: 1.6; 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f8fafc; color: var(--texto-oscuro); line-height: 1.6; min-height: 100vh; }
 
         header { 
-            background-color: var(--blanco); 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px);
             border-bottom: 3px solid var(--azul-principal); 
             padding: 0.8rem 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
+            position: sticky; top: 0; z-index: 100; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
 
-        .logo-container { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-        }
-
-        .logo-img { 
-            height: 50px; 
-            width: auto; 
-            object-fit: contain; 
-        }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-img { height: 50px; width: auto; object-fit: contain; }
 
         nav a { 
-            color: var(--azul-oscuro); 
-            text-decoration: none; 
-            margin-left: 20px; 
-            font-weight: 600; 
+            color: var(--azul-oscuro); text-decoration: none; margin-left: 20px; 
+            font-weight: 700; transition: all 0.3s ease; padding: 5px 10px; border-radius: 6px;
         }
+        nav a.active, nav a:hover { color: var(--azul-principal); background: var(--azul-light); }
 
-        nav a.active { 
-            color: var(--azul-principal); 
-            border-bottom: 2px solid var(--azul-principal); 
-        }
+        .container { max-width: 1000px; margin: 3rem auto; padding: 0 20px; }
+        .card-match { background: var(--blanco); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid var(--gris-borde); display: flex; justify-content: space-between; align-items: center; }
+        .versus { font-weight: 800; color: var(--azul-principal); }
 
-        .container { 
-            max-width: 850px; 
-            margin: 3rem auto; 
-            padding: 0 20px; 
-            min-height: calc(100vh - 230px); 
-        }
-
-        .card { 
-            background: var(--blanco); 
-            padding: 2.5rem; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-            margin-bottom: 2rem;
-        }
-
-        .card h2 { 
-            color: var(--azul-principal); 
-            margin-bottom: 1.2rem; 
-            border-bottom: 2px solid var(--gris-claro); 
-            padding-bottom: 0.5rem; 
-        }
-
-        .card p {
-            font-size: 1.05rem;
-            color: #444;
-            margin-bottom: 0.8rem;
-        }
-
-        .correo-link {
-            color: var(--azul-principal);
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
-        footer { 
-            text-align: center; 
-            padding: 1.5rem; 
-            background-color: var(--azul-oscuro); 
-            color: var(--blanco); 
-            font-size: 0.9rem; 
-        }
+        footer { text-align: center; padding: 2rem; background-color: var(--azul-oscuro); color: var(--blanco); font-size: 0.9rem; margin-top: 4rem; }
     </style>
 </head>
 <body>
+
+    <!-- TRANSICIÓN LIGERA -->
+    <div id="quick-loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #060d19; display: flex; justify-content: center; align-items: center; z-index: 99999; opacity: 1; transition: opacity 0.3s ease;">
+        <div style="width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid #00f2fe; border-radius: 50%; animation: spin 0.6s linear infinite;"></div>
+    </div>
+    <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
 
     <header>
         <div class="logo-container">
@@ -121,27 +68,34 @@
     </header>
 
     <div class="container">
-        
-        <section class="card">
-            <h2>Próximos Torneos</h2>
-            <p>Aquí se publicarán las fechas, rondas, bases del torneo y enfrentamientos oficiales.</p>
-        </section>
+        <h1 style="margin-bottom: 2rem; color: var(--azul-oscuro);">🏆 Ronda Actual del Torneo</h1>
 
-        <section class="card">
-            <h2>¿Cómo me puedo inscribir al grupo de Ajedrez?</h2>
-            <p>Para poder inscribirte al grupo de Ajedrez, deberás mandar un mensaje al correo: <a href="mailto:62945995@sda.edu.pe" class="correo-link">62945995@sda.edu.pe</a> poniendo tu usuario de Chess.com, tu nombre completo, grado y sección, mínimo haber jugado 10 partidas rápidas (10 minutos) y tu elo para el momento en el que se envía el correo, no olvidar enviar el correo con cuenta institucional (del colegio).</p>
-        </section>
+        <div class="card-match">
+            <span>Jugador 1</span>
+            <span class="versus">VS</span>
+            <span>Jugador 2</span>
+        </div>
 
-        <section class="card">
-            <h2>¿Cómo puedo participar en un torneo?</h2>
-            <p>Para poder participar, debes entrar al top 4 de los mejores jugadores de tu categoría: Menores, pre-juvenil y juvenil.</p>
-        </section>
-
+        <div class="card-match">
+            <span>Jugador 3</span>
+            <span class="versus">VS</span>
+            <span>Jugador 4</span>
+        </div>
     </div>
 
     <footer>
         <p>&copy; 2026 Club de Ajedrez P.E.P. - Colegio Santo Domingo, el Apóstol</p>
     </footer>
 
+    <script>
+        sessionStorage.setItem('pep_visited', 'true');
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('quick-loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 300);
+            }
+        });
+    </script>
 </body>
 </html>
