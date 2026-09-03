@@ -32,7 +32,7 @@
             overflow-x: hidden;
         }
 
-        /* ==================== INTRO ULTRA-PRO (PRIMERA VISITA) ==================== */
+        /* INTRO CINE / NEÓN */
         #intro-screen {
             position: fixed;
             top: 0;
@@ -45,18 +45,18 @@
             justify-content: center;
             align-items: center;
             z-index: 99999;
-            transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), transform 0.8s ease;
             overflow: hidden;
+            opacity: 1;
+            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
         }
 
-        /* Piezas flotantes de fondo */
         .chess-bg-piece {
             position: absolute;
             font-size: 5rem;
             color: rgba(255, 255, 255, 0.03);
             user-select: none;
             pointer-events: none;
-            animation: floatPiece 10s infinite ease-in-out;
+            animation: floatPiece 8s infinite ease-in-out;
         }
 
         .p1 { top: 10%; left: 12%; animation-delay: 0s; font-size: 8rem; }
@@ -76,7 +76,7 @@
             background: linear-gradient(90deg, transparent, var(--cyan-neon), transparent);
             top: 50%;
             left: -100%;
-            animation: linePass 2.5s infinite linear;
+            animation: linePass 2s infinite linear;
         }
 
         @keyframes linePass {
@@ -95,7 +95,7 @@
 
         .intro-logo-wrapper {
             position: relative;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .intro-logo-wrapper::before {
@@ -103,61 +103,57 @@
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 160px; height: 160px;
+            width: 150px; height: 150px;
             background: radial-gradient(circle, rgba(0, 242, 254, 0.4) 0%, transparent 70%);
             border-radius: 50%;
-            animation: pulseGlow 2s infinite alternate;
+            animation: pulseGlow 1.5s infinite alternate;
         }
 
         .intro-logo {
-            width: 140px;
+            width: 130px;
             height: auto;
             position: relative;
             z-index: 2;
             filter: drop-shadow(0 0 20px rgba(13, 110, 253, 0.8));
-            animation: logoScale 1.8s ease-out forwards;
+            animation: logoScale 1.2s ease-out forwards;
         }
 
         .intro-title {
             color: #ffffff;
-            font-size: 4.2rem;
+            font-size: 3.8rem;
             font-weight: 900;
-            letter-spacing: 12px;
+            letter-spacing: 10px;
             text-transform: uppercase;
             background: linear-gradient(135deg, #ffffff 30%, var(--cyan-neon) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 5px;
-            text-shadow: 0 0 30px rgba(0, 242, 254, 0.5);
-            animation: revealText 1.8s ease-out forwards;
+            text-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+            animation: revealText 1.2s ease-out forwards;
         }
 
         .intro-subtitle {
             color: #94a3b8;
-            font-size: 1.1rem;
-            letter-spacing: 5px;
+            font-size: 1rem;
+            letter-spacing: 4px;
             font-weight: 600;
             text-transform: uppercase;
-            opacity: 0;
-            animation: fadeInSub 1s ease forwards 1s;
         }
 
         .intro-loader-box {
-            margin-top: 35px;
+            margin-top: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
         }
 
         .intro-loader {
-            width: 220px;
+            width: 200px;
             height: 4px;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
         }
 
         .intro-loader-bar {
@@ -167,90 +163,43 @@
             width: 0%;
             background: linear-gradient(90deg, #0d6efd, var(--cyan-neon));
             box-shadow: 0 0 15px var(--cyan-neon);
-            animation: loadProgress 2.6s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+            animation: loadProgress 2s ease-in-out forwards;
         }
 
         .skip-btn {
             position: absolute;
             bottom: 30px;
-            right: 40px;
-            background: rgba(255, 255, 255, 0.05);
+            right: 30px;
+            background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #94a3b8;
-            padding: 8px 20px;
+            color: #ffffff;
+            padding: 8px 18px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             cursor: pointer;
             backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
             z-index: 100;
         }
 
-        .skip-btn:hover {
-            background: var(--azul-principal);
-            color: #fff;
-            border-color: var(--azul-principal);
-            box-shadow: 0 0 15px rgba(13, 110, 253, 0.6);
-        }
-
         @keyframes logoScale {
-            0% { transform: scale(0.3); opacity: 0; }
-            60% { transform: scale(1.1); opacity: 1; }
+            0% { transform: scale(0.4); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
 
         @keyframes revealText {
-            0% { letter-spacing: 25px; opacity: 0; filter: blur(10px); }
-            100% { letter-spacing: 12px; opacity: 1; filter: blur(0); }
+            0% { letter-spacing: 20px; opacity: 0; filter: blur(8px); }
+            100% { letter-spacing: 10px; opacity: 1; filter: blur(0); }
         }
 
-        @keyframes fadeInSub { to { opacity: 1; } }
-        @keyframes pulseGlow { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.4; } 100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.8; } }
-        @keyframes loadProgress { 0% { width: 0%; } 50% { width: 60%; } 100% { width: 100%; } }
+        @keyframes pulseGlow { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.4; } 100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; } }
+        @keyframes loadProgress { 0% { width: 0%; } 100% { width: 100%; } }
 
-        /* ==================== TRANSICIÓN SIMPLE (AL NAVEGAR) ==================== */
-        #quick-transition {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(10, 25, 47, 0.85);
-            backdrop-filter: blur(8px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 99998;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        #quick-transition.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .simple-spinner {
-            width: 45px;
-            height: 45px;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-top: 4px solid var(--cyan-neon);
-            border-radius: 50%;
-            animation: spin 0.6s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .fade-out {
+        .hide-intro {
             opacity: 0 !important;
-            transform: scale(1.05) !important;
-            pointer-events: none;
+            visibility: hidden !important;
+            pointer-events: none !important;
         }
 
         /* HEADER */
@@ -348,7 +297,6 @@
             box-shadow: 0 8px 25px rgba(13, 110, 253, 0.6);
         }
 
-        /* TARJETAS DE SECCIONES */
         .grid-secciones {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -394,7 +342,7 @@
 </head>
 <body>
 
-    <!-- PANTALLA INTRO PRO (SÓLO PRIMERA VISITA) -->
+    <!-- INTRO DE CARGA -->
     <div id="intro-screen">
         <div class="chess-bg-piece p1">♚</div>
         <div class="chess-bg-piece p2">♛</div>
@@ -417,15 +365,10 @@
             </div>
         </div>
 
-        <button class="skip-btn" onclick="closeIntro()">SALTAR INTRO ➔</button>
+        <button class="skip-btn" onclick="dismissIntro()">SALTAR INTRO ➔</button>
     </div>
 
-    <!-- CARGA RÁPIDA (PARA NAVEGACIÓN ENTRE PÁGINAS) -->
-    <div id="quick-transition">
-        <div class="simple-spinner"></div>
-    </div>
-
-    <!-- HEADER / MENU PRINCIPAL -->
+    <!-- HEADER -->
     <header>
         <div class="logo-container">
             <img src="logo-colegio.jpg" alt="Logo Club P.E.P." class="logo-img">
@@ -440,7 +383,7 @@
         </nav>
     </header>
 
-    <!-- CONTENIDO INICIO -->
+    <!-- CONTENIDO -->
     <div class="container">
 
         <section class="hero">
@@ -478,51 +421,23 @@
         <p>&copy; 2026 Club de Ajedrez P.E.P. - Colegio Santo Domingo, el Apóstol</p>
     </footer>
 
-    <!-- SCRIPT DE CONTROL DE INTRO Y TRANSICIONES -->
     <script>
-        const intro = document.getElementById('intro-screen');
-        const quickTransition = document.getElementById('quick-transition');
+        const introEl = document.getElementById('intro-screen');
 
-        function closeIntro() {
-            intro.classList.add('fade-out');
-            setTimeout(() => {
-                intro.style.display = 'none';
-            }, 800);
+        function dismissIntro() {
+            if (introEl) {
+                introEl.classList.add('hide-intro');
+            }
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            // Verificar si el usuario ya vio la intro principal en esta sesión
-            const hasSeenIntro = sessionStorage.getItem('pep_intro_seen');
-
-            if (!hasSeenIntro) {
-                // Primera vez que entra a la web: Mostrar Intro Épica
-                sessionStorage.setItem('pep_intro_seen', 'true');
-                setTimeout(() => {
-                    closeIntro();
-                }, 2800);
+        (function() {
+            if (sessionStorage.getItem('pep_visited')) {
+                introEl.style.display = 'none';
             } else {
-                // Si ya la vio antes: Ocultar intro grande de inmediato y mostrar carga suave rápida
-                intro.style.display = 'none';
-                quickTransition.classList.add('show');
-                setTimeout(() => {
-                    quickTransition.classList.remove('show');
-                }, 400);
+                sessionStorage.setItem('pep_visited', 'true');
+                setTimeout(dismissIntro, 2200);
             }
-        });
-
-        // Transición suave rápida al cambiar de página desde el menú
-        document.querySelectorAll('nav a, .card-seccion a, .btn-hero').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const targetUrl = this.getAttribute('href');
-                if (targetUrl && !targetUrl.startsWith('#')) {
-                    e.preventDefault();
-                    quickTransition.classList.add('show');
-                    setTimeout(() => {
-                        window.location.href = targetUrl;
-                    }, 350);
-                }
-            });
-        });
+        })();
     </script>
 
 </body>
