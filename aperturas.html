@@ -3,96 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P.E.P. - Aperturas</title>
+    <title>Aperturas - Club P.E.P.</title>
     <style>
         :root { 
-            --azul-principal: #004696; 
-            --azul-oscuro: #002d62; 
+            --azul-principal: #0d6efd; 
+            --azul-oscuro: #060d19; 
+            --azul-light: #eef6ff;
             --blanco: #ffffff; 
-            --gris-claro: #f4f6f9; 
+            --gris-borde: #e2e8f0;
+            --texto-oscuro: #0f172a;
         }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-        }
-
-        body { 
-            background-color: var(--gris-claro); 
-            color: #333; 
-            line-height: 1.6; 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f8fafc; color: var(--texto-oscuro); line-height: 1.6; min-height: 100vh; }
 
         header { 
-            background-color: var(--blanco); 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px);
             border-bottom: 3px solid var(--azul-principal); 
             padding: 0.8rem 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
+            position: sticky; top: 0; z-index: 100; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
 
-        .logo-container { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-        }
-
-        .logo-img { 
-            height: 50px; 
-            width: auto; 
-            object-fit: contain; 
-        }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-img { height: 50px; width: auto; object-fit: contain; }
 
         nav a { 
-            color: var(--azul-oscuro); 
-            text-decoration: none; 
-            margin-left: 20px; 
-            font-weight: 600; 
+            color: var(--azul-oscuro); text-decoration: none; margin-left: 20px; 
+            font-weight: 700; transition: all 0.3s ease; padding: 5px 10px; border-radius: 6px;
         }
+        nav a.active, nav a:hover { color: var(--azul-principal); background: var(--azul-light); }
 
-        nav a.active { 
-            color: var(--azul-principal); 
-            border-bottom: 2px solid var(--azul-principal); 
-        }
+        .container { max-width: 1000px; margin: 3rem auto; padding: 0 20px; }
+        .grid-aperturas { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .card-apertura { background: var(--blanco); border-radius: 16px; padding: 1.8rem; border: 1px solid var(--gris-borde); box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
+        .card-apertura h3 { color: var(--azul-principal); margin-bottom: 0.5rem; }
 
-        .container { 
-            max-width: 850px; 
-            margin: 3rem auto; 
-            padding: 0 20px; 
-            min-height: calc(100vh - 230px); 
-        }
-
-        .card { 
-            background: var(--blanco); 
-            padding: 2.5rem; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-            margin-bottom: 2rem;
-        }
-
-        .card h2 { 
-            color: var(--azul-principal); 
-            margin-bottom: 1.2rem; 
-            border-bottom: 2px solid var(--gris-claro); 
-            padding-bottom: 0.5rem; 
-        }
-
-        footer { 
-            text-align: center; 
-            padding: 1.5rem; 
-            background-color: var(--azul-oscuro); 
-            color: var(--blanco); 
-            font-size: 0.9rem; 
-        }
+        footer { text-align: center; padding: 2rem; background-color: var(--azul-oscuro); color: var(--blanco); font-size: 0.9rem; margin-top: 4rem; }
     </style>
 </head>
 <body>
+
+    <!-- TRANSICIÓN LIGERA -->
+    <div id="quick-loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #060d19; display: flex; justify-content: center; align-items: center; z-index: 99999; opacity: 1; transition: opacity 0.3s ease;">
+        <div style="width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid #00f2fe; border-radius: 50%; animation: spin 0.6s linear infinite;"></div>
+    </div>
+    <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
 
     <header>
         <div class="logo-container">
@@ -109,15 +69,40 @@
     </header>
 
     <div class="container">
-        <section class="card">
-            <h2>Aperturas de Entrenamiento</h2>
-            <p>Sección en desarrollo. Próximamente compartiremos aperturas y estrategias para el equipo.</p>
-        </section>
+        <h1 style="margin-bottom: 2rem; color: var(--azul-oscuro);">📖 Repertorio de Aperturas</h1>
+        
+        <div class="grid-aperturas">
+            <div class="card-apertura">
+                <h3>⚪ Apertura Española (Ruy López)</h3>
+                <p>1.e4 e5 2.Cf3 Cc6 3.Ab5</p>
+                <small style="color: #64748b;">Muy popular para control del centro y desarrollo rápido.</small>
+            </div>
+            <div class="card-apertura">
+                <h3>⚪ Gambito de Dama</h3>
+                <p>1.d4 d5 2.c4</p>
+                <small style="color: #64748b;">Estructura sólida de peones para controlar el flanco de dama.</small>
+            </div>
+            <div class="card-apertura">
+                <h3>⚫ Defensa Siciliana</h3>
+                <p>1.e4 c5</p>
+                <small style="color: #64748b;">Respuesta agresiva y asimétrica contra 1.e4.</small>
+            </div>
+        </div>
     </div>
 
     <footer>
         <p>&copy; 2026 Club de Ajedrez P.E.P. - Colegio Santo Domingo, el Apóstol</p>
     </footer>
 
+    <script>
+        sessionStorage.setItem('pep_visited', 'true');
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('quick-loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 300);
+            }
+        });
+    </script>
 </body>
 </html>
