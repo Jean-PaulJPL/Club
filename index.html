@@ -7,11 +7,12 @@
     <style>
         :root { 
             --azul-principal: #0d6efd; 
-            --azul-oscuro: #0a192f; 
-            --azul-marino: #1e293b;
+            --azul-oscuro: #030712; 
+            --azul-marino: #0f172a;
+            --cyan-neon: #00f2fe;
+            --gold-neon: #ffd700;
             --azul-light: #eef6ff;
             --blanco: #ffffff; 
-            --gris-fondo: #f1f5f9; 
             --gris-borde: #e2e8f0;
             --texto-oscuro: #0f172a;
         }
@@ -28,101 +29,227 @@
             color: var(--texto-oscuro); 
             line-height: 1.6; 
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* ==================== INTRO STYLE (NETFLIX STYLE) ==================== */
+        /* ==================== INTRO CINEMATICA PREMIUM ==================== */
         #intro-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background: radial-gradient(circle at center, #1e293b 0%, #0a192f 100%);
+            background: radial-gradient(circle at center, #0b172d 0%, #020611 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            z-index: 99999;
+            overflow: hidden;
+            transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), transform 0.8s ease;
         }
 
+        /* Rayos de luz neón de fondo */
+        .neon-grid {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                linear-gradient(to right, rgba(0, 242, 254, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 242, 254, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(500px) rotateX(60deg);
+            bottom: -50%;
+            animation: gridMove 15s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+        }
+
+        /* Piezas flotantes cinemáticas */
+        .chess-bg-piece {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.04);
+            user-select: none;
+            pointer-events: none;
+            text-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+            animation: floatPiece 9s infinite ease-in-out;
+        }
+
+        .p1 { top: 8%; left: 10%; animation-delay: 0s; font-size: 9rem; }
+        .p2 { top: 60%; left: 82%; animation-delay: 2s; font-size: 11rem; }
+        .p3 { top: 68%; left: 12%; animation-delay: 4s; font-size: 8rem; }
+        .p4 { top: 12%; left: 78%; animation-delay: 1s; font-size: 10rem; }
+
+        @keyframes floatPiece {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-35px) rotate(12deg) scale(1.05); }
+        }
+
+        /* Escaneo de láser */
+        .laser-beam {
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--cyan-neon), var(--blanco), var(--cyan-neon), transparent);
+            top: 0;
+            box-shadow: 0 0 15px var(--cyan-neon);
+            animation: laserScan 3s infinite ease-in-out;
+        }
+
+        @keyframes laserScan {
+            0% { top: 0%; opacity: 0; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        /* Contenido Principal de Intro */
         .intro-content {
+            position: relative;
+            z-index: 10;
             text-align: center;
-            animation: zoomIn 1.5s ease-out forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .intro-logo-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .intro-logo-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 170px; height: 170px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.5) 0%, rgba(13, 110, 253, 0.2) 50%, transparent 70%);
+            border-radius: 50%;
+            animation: pulseGlow 2s infinite alternate;
         }
 
         .intro-logo {
-            width: 130px;
+            width: 140px;
             height: auto;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 25px rgba(13, 110, 253, 0.6));
-            animation: pulseGlow 2s infinite alternate;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.8));
+            animation: logoEntrance 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
         .intro-title {
             color: #ffffff;
-            font-size: 3.5rem;
+            font-size: 4.5rem;
             font-weight: 900;
-            letter-spacing: 6px;
+            letter-spacing: 14px;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #ffffff 0%, #0d6efd 100%);
+            background: linear-gradient(135deg, #ffffff 20%, var(--cyan-neon) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 5px;
+            text-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
+            animation: titleReveal 1.4s ease-out forwards;
         }
 
         .intro-subtitle {
             color: #94a3b8;
             font-size: 1.1rem;
-            letter-spacing: 3px;
-            font-weight: 600;
+            letter-spacing: 6px;
+            font-weight: 700;
             text-transform: uppercase;
+            opacity: 0;
+            animation: fadeInSub 0.8s ease forwards 0.8s;
         }
 
-        .intro-loader {
-            margin-top: 30px;
-            width: 180px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
+        /* Barra de carga de alta tecnología */
+        .loader-container {
+            margin-top: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .loader-bar-bg {
+            width: 240px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
             overflow: hidden;
             position: relative;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
         }
 
-        .intro-loader::after {
-            content: '';
+        .loader-bar-fill {
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
+            top: 0; left: 0;
             height: 100%;
-            background: linear-gradient(90deg, #0d6efd, #00d2ff);
-            animation: loadingBar 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            width: 0%;
+            background: linear-gradient(90deg, #0d6efd, var(--cyan-neon), #ffffff);
+            box-shadow: 0 0 20px var(--cyan-neon);
+            animation: fillProgress 2.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
         }
 
-        /* ANIMACIONES INTRO */
-        @keyframes zoomIn {
-            0% { transform: scale(0.6); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: scale(1); opacity: 1; }
+        /* Botón Saltar Intro */
+        .skip-btn {
+            position: absolute;
+            bottom: 35px;
+            right: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            color: #e2e8f0;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .skip-btn:hover {
+            background: var(--cyan-neon);
+            color: var(--azul-oscuro);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.8);
+            transform: scale(1.05);
+        }
+
+        /* ANIMACIONES KEYFRAMES */
+        @keyframes logoEntrance {
+            0% { transform: scale(0.2) rotate(-10deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        @keyframes titleReveal {
+            0% { letter-spacing: 30px; opacity: 0; filter: blur(12px); }
+            100% { letter-spacing: 14px; opacity: 1; filter: blur(0); }
+        }
+
+        @keyframes fadeInSub {
+            to { opacity: 1; }
         }
 
         @keyframes pulseGlow {
-            0% { filter: drop-shadow(0 0 15px rgba(13, 110, 253, 0.4)); }
-            100% { filter: drop-shadow(0 0 35px rgba(0, 210, 255, 0.8)); }
+            0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.35); opacity: 0.9; }
         }
 
-        @keyframes loadingBar {
-            0% { left: -100%; }
-            100% { left: 0%; }
+        @keyframes fillProgress {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
         }
 
-        .fade-out {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
+        .hide-intro-animation {
+            opacity: 0 !important;
+            transform: scale(1.08) !important;
+            pointer-events: none !important;
         }
-        /* ==================================================================== */
 
         /* HEADER */
         header { 
@@ -219,7 +346,6 @@
             box-shadow: 0 8px 25px rgba(13, 110, 253, 0.6);
         }
 
-        /* TARJETAS DE SECCIONES */
         .grid-secciones {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -265,17 +391,33 @@
 </head>
 <body>
 
-    <!-- PANTALLA INTRO -->
     <div id="intro-screen">
+        <div class="neon-grid"></div>
+        <div class="laser-beam"></div>
+
+        <div class="chess-bg-piece p1">♚</div>
+        <div class="chess-bg-piece p2">♛</div>
+        <div class="chess-bg-piece p3">♞</div>
+        <div class="chess-bg-piece p4">♜</div>
+
         <div class="intro-content">
-            <img src="logo-colegio.jpg" alt="Logo P.E.P." class="intro-logo">
+            <div class="intro-logo-container">
+                <div class="intro-logo-glow"></div>
+                <img src="logo-colegio.jpg" alt="Logo P.E.P." class="intro-logo">
+            </div>
             <h1 class="intro-title">P.E.P.</h1>
             <p class="intro-subtitle">Club de Ajedrez SDA</p>
-            <div class="intro-loader"></div>
+            
+            <div class="loader-container">
+                <div class="loader-bar-bg">
+                    <div class="loader-bar-fill"></div>
+                </div>
+            </div>
         </div>
+
+        <button class="skip-btn" onclick="dismissIntro()">SALTAR INTRO ➔</button>
     </div>
 
-    <!-- HEADER / MENU PRINCIPAL -->
     <header>
         <div class="logo-container">
             <img src="logo-colegio.jpg" alt="Logo Club P.E.P." class="logo-img">
@@ -290,12 +432,11 @@
         </nav>
     </header>
 
-    <!-- CONTENIDO INICIO -->
     <div class="container">
 
         <section class="hero">
             <h1>Bienvenido a P.E.P.</h1>
-            <p>El portal oficial de ajedrez del Colegio Santo Domingo, el Apóstol. Sigue el rendimiento de los jugadores, torneos activos, estadísticas y aperturas favoritas.</p>
+            <p>El apartado de bienvenida al ajedrez del Colegio Santo Domingo, el Apóstol. Sigue el rendimiento de los jugadores, torneos activos, estadísticas y aperturas.</p>
             <a href="clasificacion.html" class="btn-hero">Ver Clasificación</a>
         </section>
 
@@ -307,17 +448,17 @@
             </div>
             <div class="card-seccion">
                 <h3>📖 Aperturas</h3>
-                <p>Revisa los repertorios con blancas y negras de los jugadores.</p>
+                <p>Revisa los repertorios con blancas y negras.</p>
                 <a href="aperturas.html" class="btn-hero" style="padding: 8px 18px; font-size: 0.85rem;">Ver Aperturas</a>
             </div>
             <div class="card-seccion">
                 <h3>🏆 Torneo</h3>
-                <p>Sigue de cerca las partidas y enfrentamientos vigentes.</p>
+                <p>Acá podrás revisar los torneos del colegio, y si gustas, poder inscribirte.</p>
                 <a href="torneo.html" class="btn-hero" style="padding: 8px 18px; font-size: 0.85rem;">Ver Torneo</a>
             </div>
             <div class="card-seccion">
                 <h3>📈 Estadísticas</h3>
-                <p>Consulta la tabla general con Elo, Victorias, Tablas y Derrotas.</p>
+                <p>Revisa la tabla general con Elo, Victorias, Tablas y Derrotas.</p>
                 <a href="clasificacion.html" class="btn-hero" style="padding: 8px 18px; font-size: 0.85rem;">Ver Tabla</a>
             </div>
         </div>
@@ -328,16 +469,27 @@
         <p>&copy; 2026 Club de Ajedrez P.E.P. - Colegio Santo Domingo, el Apóstol</p>
     </footer>
 
-    <!-- SCRIPT PARA CONTROLAR LA INTRO -->
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const intro = document.getElementById('intro-screen');
-            
-            // Oculta la intro tras 2.2 segundos
-            setTimeout(() => {
-                intro.classList.add('fade-out');
-            }, 2200);
-        });
+        const introEl = document.getElementById('intro-screen');
+
+        function dismissIntro() {
+            if (introEl) {
+                introEl.classList.add('hide-intro-animation');
+                setTimeout(() => {
+                    introEl.style.display = 'none';
+                }, 800);
+            }
+        }
+
+        (function() {
+            // Verifica si es la primera visita de la sesión
+            if (sessionStorage.getItem('pep_visited')) {
+                introEl.style.display = 'none';
+            } else {
+                sessionStorage.setItem('pep_visited', 'true');
+                setTimeout(dismissIntro, 2500);
+            }
+        })();
     </script>
 
 </body>
