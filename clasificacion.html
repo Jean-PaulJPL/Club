@@ -323,8 +323,8 @@
                 <div class="stat-label">Jugadores Activos</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">1016</div>
-                <div class="stat-label">Máximo Elo (Joaquín)</div>
+                <div class="stat-number" id="max-elo-display">...</div>
+                <div class="stat-label" id="max-elo-label">Máximo Elo</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">12</div>
@@ -342,7 +342,7 @@
                 <h2>♟️ Tabla General de Jugadores - SDA</h2>
             </div>
 
-            <table class="tabla-torneo">
+            <table class="tabla-torneo" id="tabla-jugadores">
                 <thead>
                     <tr>
                         <th>Jugador</th>
@@ -360,7 +360,7 @@
                 <tbody>
                     <tr>
                         <td class="jugador-nombre">🥇 Joaquín Arias</td>
-                        <td><span class="badge-elo top-1">1016</span></td>
+                        <td><span class="badge-elo top-1">Cargando...</span></td>
                         <td><strong>1</strong></td>
                         <td><strong>1</strong></td>
                         <td>0</td>
@@ -372,7 +372,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">🥈 Jean Paul</td>
-                        <td><span class="badge-elo top-2">706</span></td>
+                        <td><span class="badge-elo top-2">Cargando...</span></td>
                         <td><strong>5</strong></td>
                         <td>0</td>
                         <td>0</td>
@@ -384,7 +384,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">🥉 Alfredo Fortunic</td>
-                        <td><span class="badge-elo top-3">419</span></td>
+                        <td><span class="badge-elo top-3">Cargando...</span></td>
                         <td><strong>1</strong></td>
                         <td>0</td>
                         <td>1</td>
@@ -396,7 +396,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Miguel Reyna</td>
-                        <td><span class="badge-elo">344</span></td>
+                        <td><span class="badge-elo">Cargando...</span></td>
                         <td>0</td>
                         <td><strong>1</strong></td>
                         <td>1</td>
@@ -408,7 +408,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Leonel Chiguán</td>
-                        <td><span class="badge-elo">296</span></td>
+                        <td><span class="badge-elo">Cargando...</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -420,7 +420,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Jose Incio</td>
-                        <td><span class="badge-elo">288</span></td>
+                        <td><span class="badge-elo">Cargando...</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -432,7 +432,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Mirko Pezoa</td>
-                        <td><span class="badge-elo">273</span></td>
+                        <td><span class="badge-elo">Cargando...</span></td>
                         <td>0</td>
                         <td>0</td>
                         <td>3</td>
@@ -444,7 +444,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Ariana Chupillón</td>
-                        <td><span class="badge-elo">263</span></td>
+                        <td><span class="badge-elo">Cargando...</span></td>
                         <td><strong>1</strong></td>
                         <td>0</td>
                         <td>1</td>
@@ -456,7 +456,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Nils Angeldonis</td>
-                        <td><span class="badge-elo">248</span></td>
+                        <td><span class="badge-elo">Cargando...</span></td>
                         <td>0</td>
                         <td>0</td>
                         <td>2</td>
@@ -468,7 +468,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Paolo Chávez</td>
-                        <td><span class="badge-elo">190</span></td>
+                        <td><span class="badge-elo">Cargando...</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -480,7 +480,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Valentino Carrasco</td>
-                        <td><span class="badge-elo">182</span></td>
+                        <td><span class="badge-elo">Cargando...</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -492,7 +492,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Nicól Cabezudo</td>
-                        <td><span class="badge-elo">103</span></td>
+                        <td><span class="badge-elo">N/A</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -504,7 +504,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Caetano Carranza</td>
-                        <td><em>(Clasificando)</em></td>
+                        <td><span class="badge-elo">Cargando...</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -516,7 +516,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Luana Chuquilín</td>
-                        <td>-</td>
+                        <td><span class="badge-elo">N/A</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -528,7 +528,7 @@
                     </tr>
                     <tr>
                         <td class="jugador-nombre">Adrián Villegas</td>
-                        <td><em>(Clasificando)</em></td>
+                        <td><span class="badge-elo">N/A</span></td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -548,5 +548,60 @@
         <p>&copy; 2026 Club de Ajedrez P.E.P. - Colegio Santo Domingo, el Apóstol</p>
     </footer>
 
+    <!-- SCRIPT PARA ELO EN VIVO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filas = document.querySelectorAll('#tabla-jugadores tbody tr');
+            let maxElo = 0;
+            let maxJugador = '';
+
+            filas.forEach(async (fila) => {
+                const eloBadge = fila.querySelector('.badge-elo');
+                const enlacePerfil = fila.querySelector('.btn-perfil');
+
+                if (!enlacePerfil) return;
+
+                const urlParts = enlacePerfil.href.split('/');
+                const username = urlParts[urlParts.length - 1] || urlParts[urlParts.length - 2];
+
+                try {
+                    const response = await fetch(`https://api.chess.com/pub/player/${username}/stats`);
+                    
+                    if (!response.ok) throw new Error('Usuario no encontrado');
+                    
+                    const data = await response.json();
+                    
+                    // Se prioriza el Elo de la modalidad Rapid, luego Blitz y Bullet si no está disponible
+                    let elo = null;
+                    if (data.chess_rapid && data.chess_rapid.last) {
+                        elo = data.chess_rapid.last.rating;
+                    } else if (data.chess_blitz && data.chess_blitz.last) {
+                        elo = data.chess_blitz.last.rating;
+                    } else if (data.chess_bullet && data.chess_bullet.last) {
+                        elo = data.chess_bullet.last.rating;
+                    }
+
+                    if (elo !== null) {
+                        eloBadge.textContent = elo;
+
+                        // Actualizar la tarjeta del Elo Máximo dinámicamente
+                        if (elo > maxElo) {
+                            maxElo = elo;
+                            const nombreJugador = fila.querySelector('.jugador-nombre').textContent.replace(/^[🥇🥈🥉]\s*/, '');
+                            maxJugador = nombreJugador;
+                            
+                            document.getElementById('max-elo-display').textContent = maxElo;
+                            document.getElementById('max-elo-label').textContent = `Máximo Elo (${maxJugador})`;
+                        }
+                    } else {
+                        eloBadge.textContent = 'Sin Rk';
+                    }
+                } catch (error) {
+                    console.error(`Error al obtener datos de ${username}:`, error);
+                    eloBadge.textContent = 'Error';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
