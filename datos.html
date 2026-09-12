@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P.E.P. - Datos Generales</title>
+    <title>P.E.P. - Datos</title>
     <style>
         :root { 
-            --azul-principal: #0d6efd; 
+            --azul-principal: #00d2ff; 
+            --azul-hover: #00b4d8;
             --azul-oscuro: #0a192f; 
-            --azul-marino: #1e293b;
-            --azul-light: #eef6ff;
+            --azul-marino: #0f172a;
             --blanco: #ffffff; 
-            --gris-fondo: #f1f5f9; 
-            --gris-borde: #e2e8f0;
+            --gris-fondo: #e2e8f0;
+            --gris-borde: #cbd5e1;
             --texto-oscuro: #0f172a;
         }
 
@@ -34,7 +34,7 @@
         header { 
             background: rgba(255, 255, 255, 0.95); 
             backdrop-filter: blur(10px);
-            border-bottom: 3px solid var(--azul-principal); 
+            border-bottom: 3px solid #0d6efd; 
             padding: 0.8rem 5%; 
             display: flex; 
             justify-content: space-between; 
@@ -63,162 +63,141 @@
             margin-left: 20px; 
             font-weight: 700; 
             transition: all 0.3s ease;
-            padding: 5px 10px;
-            border-radius: 6px;
+            padding: 6px 14px;
+            border-radius: 8px;
         }
 
         nav a.active, nav a:hover { 
-            color: var(--azul-principal); 
-            background: var(--azul-light);
+            color: #0d6efd; 
+            background: #eef6ff;
         }
 
         .container { 
-            max-width: 1250px; 
-            margin: 2.5rem auto; 
+            max-width: 900px; 
+            margin: 3rem auto; 
             padding: 0 20px; 
+            min-height: calc(100vh - 230px);
         }
 
-        /* BANNER */
+        /* BANNER TITULO SUPERIOR */
         .page-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .page-header h1 {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             color: var(--azul-oscuro);
             font-weight: 800;
         }
 
-        .page-header p {
-            color: #64748b;
-            font-size: 1.1rem;
-            margin-top: 8px;
-        }
-
-        /* METRICAS PRINCIPALES */
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .kpi-card {
-            background: var(--blanco);
-            padding: 1.8rem;
-            border-radius: 18px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-            text-align: center;
+        /* TARJETAS MODERNAS ESTILO INICIO */
+        .card { 
+            background: var(--blanco); 
+            padding: 2.5rem; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05); 
             border: 1px solid var(--gris-borde);
+            margin-bottom: 2.5rem;
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
         }
 
-        .kpi-card::before {
+        .card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
             background: linear-gradient(90deg, #0d6efd, #00d2ff);
         }
 
-        .kpi-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 30px rgba(13, 110, 253, 0.12);
-        }
-
-        .kpi-icon {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .kpi-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--azul-oscuro);
-        }
-
-        .kpi-label {
-            font-size: 0.85rem;
-            color: #64748b;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-top: 4px;
-        }
-
-        /* TARJETAS INFORMATIVAS */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .info-card {
-            background: var(--blanco);
-            border-radius: 20px;
-            padding: 2.2rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.04);
-            border: 1px solid var(--gris-borde);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
+        .card:hover {
+            transform: translateY(-4px);
             box-shadow: 0 20px 40px rgba(13, 110, 253, 0.08);
         }
 
-        .info-card h3 {
-            color: var(--azul-oscuro);
-            font-size: 1.35rem;
+        .card h2 { 
+            color: var(--azul-oscuro); 
+            margin-bottom: 1.5rem; 
+            font-size: 1.6rem;
             font-weight: 800;
-            margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 10px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.8rem;
         }
 
-        .info-card p {
-            color: #475569;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .data-list {
-            list-style: none;
-            margin-top: 1.2rem;
-        }
-
-        .data-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--gris-fondo);
+        /* LISTA DE DATOS CON BADGES Y BORDES */
+        .datos-lista .dato-item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            font-size: 0.92rem;
-            font-weight: 600;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 1.05rem;
         }
 
-        .data-list li:last-child {
+        .datos-lista .dato-item:last-child {
             border-bottom: none;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
         }
 
-        .badge-info {
-            background: var(--azul-light);
-            color: var(--azul-principal);
-            padding: 4px 12px;
-            border-radius: 20px;
+        .dato-label {
             font-weight: 700;
-            font-size: 0.82rem;
+            color: var(--azul-oscuro);
+        }
+
+        .dato-valor {
+            background: #eef6ff;
+            color: #0d6efd;
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .lema-box {
+            background: #f8fafc;
+            border-left: 4px solid #0d6efd;
+            padding: 12px 18px;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+            color: #334155;
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        /* TEXTO HISTORIA */
+        .historia-texto p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            font-size: 1.05rem;
+            color: #334155;
+            line-height: 1.8;
+        }
+
+        .firma-autor {
+            text-align: right;
+            font-weight: 800;
+            color: #0d6efd;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            font-style: normal;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 8px;
         }
 
         footer { 
             text-align: center; 
-            padding: 2rem; 
+            padding: 1.8rem; 
             background-color: var(--azul-oscuro); 
             color: var(--blanco); 
             font-size: 0.9rem; 
@@ -244,73 +223,47 @@
 
     <div class="container">
 
-        <!-- ENCABEZADO -->
         <div class="page-header">
-            <h1>📊 Datos Generales del Club</h1>
-            <p>Información detallada, registro institucional y métricas del club P.E.P.</p>
+            <h1>📋 Datos del Club</h1>
         </div>
 
-        <!-- TARJETAS DE DATOS RÁPIDOS -->
-        <div class="kpi-grid">
-            <div class="kpi-card">
-                <div class="kpi-icon">👥</div>
-                <div class="kpi-number">15</div>
-                <div class="kpi-label">Jugadores Registrados</div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-icon">🏫</div>
-                <div class="kpi-number">7</div>
-                <div class="kpi-label">Aulas Representadas</div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-icon">⚔️</div>
-                <div class="kpi-number">12</div>
-                <div class="kpi-label">Partidas Amistosas</div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-icon">🌐</div>
-                <div class="kpi-number">11</div>
-                <div class="kpi-label">Cuentas Vinculadas</div>
-            </div>
-        </div>
-
-        <!-- TARJETAS DE INFORMACION -->
-        <div class="info-grid">
-
-            <div class="info-card">
-                <h3>🏛️ Ficha Técnica del Club</h3>
-                <p>El Club de Ajedrez P.E.P. promueve el desarrollo táctico y el pensamiento crítico en los estudiantes.</p>
-                <ul class="data-list">
-                    <li><span>Colegio:</span> <span class="badge-info">Santo Domingo, el Apóstol</span></li>
-                    <li><span>Categoría:</span> <span class="badge-info">Secundaria (1° a 3°)</span></li>
-                    <li><span>Modalidad:</span> <span class="badge-info">Presencial y Online</span></li>
-                    <li><span>Temporada:</span> <span class="badge-info">2026 - I Torneo</span></li>
-                </ul>
+        <section class="card datos-lista">
+            <h2>📊 Información General</h2>
+            
+            <div class="dato-item">
+                <span class="dato-label">Nombre del club:</span>
+                <span class="dato-valor">Peones en progresión (P.E.P.)</span>
             </div>
 
-            <div class="info-card">
-                <h3>💻 Integración Digital</h3>
-                <p>Métricas y seguimiento de jugadores vinculados directamente con los servidores de Chess.com.</p>
-                <ul class="data-list">
-                    <li><span>Servidor de Datos:</span> <span class="badge-info">API Chess.com</span></li>
-                    <li><span>Actualización:</span> <span class="badge-info">En Vivo / Automática</span></li>
-                    <li><span>Criterio de Ranking:</span> <span class="badge-info">Rápida → Blitz → Bullet</span></li>
-                    <li><span>Estado de Red:</span> <span class="badge-info">🟢 Conectado</span></li>
-                </ul>
+            <div class="dato-item">
+                <span class="dato-label">Docente encargado:</span>
+                <span class="dato-valor">Lenin Josue Luna Santamaria</span>
             </div>
 
-            <div class="info-card">
-                <h3>📌 Distribución por Aulas</h3>
-                <p>Representación por grado y sección de los integrantes activos dentro del club.</p>
-                <ul class="data-list">
-                    <li><span>3° Grado A:</span> <span class="badge-info">5 Jugadores</span></li>
-                    <li><span>3° Grado D:</span> <span class="badge-info">3 Jugadores</span></li>
-                    <li><span>3° Grado E:</span> <span class="badge-info">2 Jugadores</span></li>
-                    <li><span>Otras Aulas (1°D, 2°A, 3°B, 3°C):</span> <span class="badge-info">5 Jugadores</span></li>
-                </ul>
+            <div class="dato-item">
+                <span class="dato-label">Colegio:</span>
+                <span class="dato-valor">Santo Domingo, el Apóstol</span>
             </div>
 
-        </div>
+            <div class="dato-item">
+                <span class="dato-label">Lema:</span>
+                <div class="lema-box">
+                    "Ajedrez de mentes optimistas: nueva generación con buena actitud por dominar el ajedrez."
+                </div>
+            </div>
+        </section>
+
+        <section class="card historia-texto">
+            <h2>♟️ ¿Por qué nació este club?</h2>
+            
+            <p>La idea de crear el club nació en el increíble 3er año "A" (orgulloso por supuesto), cuando un tal Alfredo Fortunic me dijo para jugar una partida, y yo pues, simplemente acepté porque sabía algunos conceptos básicos, y pues, le gané las dos partidas que jugamos, y él al siguiente día quizo volver a jugar conmigo, y yo perdí las dos partidas. Entendí que no era el mejor, sino, hubiera ganado las 4 partidas, pero no fue así.</p>
+            
+            <p>Entonces, me creé una cuenta de Chess.com para comenzar a practicar, y él también, y comenzamos a jugar los dos, incluso creamos un torneo de Ajedrez en nuestro mismo salón, pero no era muy llamativo, obviamente habían algunas excepciones, pero no le interesaba al 90% del salón, así que seguí jugando, igual Alfredo, igual algunos compañeros más.</p>
+            
+            <p>Y pues, un día, se lo comenté al profesor al final de la clase del taller de Atletismo junto con una compañera, Luana Domenica Chuquilin de la Cuba, y el profesor nos aceptó la idea, entonces, seguí juntando personas, buscando a alumnos de todos los grados de secundaria para seguir haciendo crecer este grupo, y así, poco a poco fuimos ganando más nivel gracias a la práctica diaria.</p>
+
+            <div class="firma-autor">✍️ Jean Paul Jhon Llerena</div>
+        </section>
 
     </div>
 
