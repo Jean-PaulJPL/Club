@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P.E.P. - Datos del Club</title>
+    <title>P.E.P. - Estadísticas</title>
     <style>
         :root { 
             --azul-principal: #0d6efd; 
@@ -81,99 +81,53 @@
             padding: 0 20px; 
         }
 
-        /* BANNER TITULO */
-        .page-title {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .page-title h1 {
-            font-size: 2.2rem;
-            color: var(--azul-oscuro);
-            font-weight: 800;
-        }
-
-        .page-title p {
-            color: #64748b;
-            font-size: 1.05rem;
-            margin-top: 5px;
-        }
-
-        /* TARJETAS DE DATOS / INFORMACIÓN */
-        .datos-grid {
+        /* STATS GRID */
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.8rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
             margin-bottom: 2.5rem;
         }
 
-        .info-card {
+        .stat-card {
             background: var(--blanco);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.04);
-            border: 1px solid var(--gris-borde);
-            transition: all 0.3s ease;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.8);
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .info-card::before {
+        .stat-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 5px;
-            background: linear-gradient(90deg, var(--azul-principal), #00d2ff);
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, #0d6efd, #00d2ff);
         }
 
-        .info-card:hover {
+        .stat-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(13, 110, 253, 0.12);
+            box-shadow: 0 15px 30px rgba(13, 110, 253, 0.12);
         }
 
-        .info-card .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        .info-card h3 {
-            color: var(--azul-oscuro);
-            font-size: 1.3rem;
+        .stat-number {
+            font-size: 2.4rem;
             font-weight: 800;
-            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, #0a192f, #0d6efd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.2rem;
         }
 
-        .info-card p {
-            color: #475569;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .info-card ul {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .info-card ul li {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--gris-fondo);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.92rem;
-        }
-
-        .info-card ul li:last-child {
-            border-bottom: none;
-        }
-
-        .info-card ul li span.tag {
-            background: var(--azul-light);
-            color: var(--azul-principal);
-            padding: 3px 10px;
-            border-radius: 12px;
+        .stat-label {
+            font-size: 0.85rem;
+            color: #64748b;
             font-weight: 700;
-            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
         }
 
         /* CARD TABLA */
@@ -353,61 +307,39 @@
         </div>
         <nav>
             <a href="index.html">Inicio</a>
-            <a href="datos.html" class="active">Datos</a>
+            <a href="datos.html">Datos</a>
             <a href="aperturas.html">Aperturas</a>
             <a href="torneo.html">Torneo</a>
-            <a href="clasificacion.html">Estadísticas</a>
+            <a href="clasificacion.html" class="active">Estadísticas</a>
         </nav>
     </header>
 
     <div class="container">
 
-        <!-- TITULO DE LA SECCION -->
-        <div class="page-title">
-            <h1>📊 Datos Generales del Club</h1>
-            <p>Información detallada y registro oficial de los integrantes del club P.E.P.</p>
-        </div>
-
-        <!-- TARJETAS CON INFORMACION GENERAL -->
-        <div class="datos-grid">
-            <div class="info-card">
-                <span class="card-icon">📌</span>
-                <h3>Información del Club</h3>
-                <p>El Club de Ajedrez P.E.P. fomenta el pensamiento analítico y la sana competencia entre los alumnos.</p>
-                <ul>
-                    <li><span>Colegio:</span> <span class="tag">Santo Domingo, el Apóstol</span></li>
-                    <li><span>Modalidad:</span> <span class="tag">Presencial y Online</span></li>
-                    <li><span>Plataforma:</span> <span class="tag">Chess.com</span></li>
-                </ul>
+        <!-- RESUMEN EN TARJETAS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Jugadores Activos</div>
             </div>
-
-            <div class="info-card">
-                <span class="card-icon">⭐</span>
-                <h3>Criterios de Ranking</h3>
-                <p>La tabla actualiza automáticamente el Elo de los jugadores consultando la API en vivo de Chess.com.</p>
-                <ul>
-                    <li><span>Prioridad de Elo:</span> <span class="tag">Rápida → Blitz → Bullet</span></li>
-                    <li><span>Ordenamiento:</span> <span class="tag">Automático (Mayor a Menor)</span></li>
-                    <li><span>Sincronización:</span> <span class="tag">En tiempo real</span></li>
-                </ul>
+            <div class="stat-card">
+                <div class="stat-number" id="max-elo-display">...</div>
+                <div class="stat-label" id="max-elo-label">Máximo Elo</div>
             </div>
-
-            <div class="info-card">
-                <span class="card-icon">🏆</span>
-                <h3>Resumen de Actividad</h3>
-                <p>Registro continuo del desempeño de los alumnos durante los torneos internos y partidas amistosas.</p>
-                <ul>
-                    <li><span>Total Integrantes:</span> <span class="tag">15 Jugadores</span></li>
-                    <li><span>Grados Participantes:</span> <span class="tag">1°A a 3°E</span></li>
-                    <li><span>Estado del Torneo:</span> <span class="tag">En Desarrollo</span></li>
-                </ul>
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Partidas Amistosas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3A / 3E</div>
+                <div class="stat-label">Aulas Líderes</div>
             </div>
         </div>
         
-        <!-- TABLA PRINCIPAL DE JUGADORES -->
+        <!-- TABLA -->
         <section class="card">
             <div class="card-header">
-                <h2>♟️ Registro Oficial de Jugadores</h2>
+                <h2>♟️ Tabla General de Jugadores - SDA</h2>
             </div>
 
             <table class="tabla-torneo" id="tabla-jugadores">
@@ -534,7 +466,7 @@
                         <td>-</td>
                         <td><a href="https://www.chess.com/member/nils1714" target="_blank" class="btn-perfil">Perfil</a></td>
                     </tr>
-                    <!-- Paolo con su nueva cuenta paolo160100 -->
+                    <!-- Nueva cuenta de Paolo -->
                     <tr data-username="paolo160100">
                         <td class="jugador-nombre">Paolo Chávez</td>
                         <td><span class="badge-elo">...</span></td>
@@ -617,7 +549,7 @@
         <p>&copy; 2026 Club de Ajedrez P.E.P. - Colegio Santo Domingo, el Apóstol</p>
     </footer>
 
-    <!-- SCRIPT DE CARGA Y ORDENAMIENTO AUTOMATICO POR ELO -->
+    <!-- SCRIPT DE CARGA Y ORDENAMIENTO EN VIVO -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const tbody = document.querySelector('#tabla-jugadores tbody');
@@ -662,6 +594,17 @@
                         tdNombre.textContent = nombreLimpio;
                     }
                 });
+                
+                const primeraFila = tbody.querySelector('tr');
+                if (primeraFila) {
+                    const maxElo = primeraFila.querySelector('.badge-elo')?.textContent;
+                    const maxNombre = primeraFila.querySelector('.jugador-nombre')?.textContent.replace(/^[🥇🥈🥉]\s*/, '').trim();
+                    
+                    const maxDisplay = document.getElementById('max-elo-display');
+                    const maxLabel = document.getElementById('max-elo-label');
+                    if (maxDisplay && maxElo && maxElo !== 'N/A') maxDisplay.textContent = maxElo;
+                    if (maxLabel && maxNombre) maxLabel.textContent = `Máximo Elo (${maxNombre})`;
+                }
             }
 
             filas.forEach((fila) => {
