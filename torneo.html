@@ -6,10 +6,14 @@
     <title>P.E.P. - Torneo</title>
     <style>
         :root { 
-            --azul-principal: #004696; 
-            --azul-oscuro: #002d62; 
+            --azul-principal: #0d6efd; 
+            --azul-oscuro: #0a192f; 
+            --azul-marino: #1e293b;
+            --azul-light: #eef6ff;
             --blanco: #ffffff; 
-            --gris-claro: #f4f6f9; 
+            --gris-fondo: #f8fafc; 
+            --gris-borde: #cbd5e1;
+            --texto-oscuro: #0f172a;
         }
 
         * { 
@@ -20,13 +24,16 @@
         }
 
         body { 
-            background-color: var(--gris-claro); 
-            color: #333; 
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); 
+            color: var(--texto-oscuro); 
             line-height: 1.6; 
+            min-height: 100vh;
         }
 
+        /* HEADER sticky */
         header { 
-            background-color: var(--blanco); 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px);
             border-bottom: 3px solid var(--azul-principal); 
             padding: 0.8rem 5%; 
             display: flex; 
@@ -35,6 +42,7 @@
             position: sticky; 
             top: 0; 
             z-index: 100; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
 
         .logo-container { 
@@ -53,54 +61,130 @@
             color: var(--azul-oscuro); 
             text-decoration: none; 
             margin-left: 20px; 
-            font-weight: 600; 
+            font-weight: 700; 
+            transition: all 0.3s ease;
+            padding: 6px 14px;
+            border-radius: 8px;
         }
 
-        nav a.active { 
+        nav a.active, nav a:hover { 
             color: var(--azul-principal); 
-            border-bottom: 2px solid var(--azul-principal); 
+            background: var(--azul-light);
         }
 
         .container { 
-            max-width: 850px; 
+            max-width: 900px; 
             margin: 3rem auto; 
             padding: 0 20px; 
-            min-height: calc(100vh - 230px); 
+            min-height: calc(100vh - 230px);
         }
 
+        /* BANNER TITULO */
+        .page-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.2rem;
+            color: var(--azul-oscuro);
+            font-weight: 800;
+        }
+
+        /* CARD MODERNA CON LINEA SUPERIOR */
         .card { 
             background: var(--blanco); 
             padding: 2.5rem; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            border-radius: 20px; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05); 
+            border: 1px solid var(--gris-borde);
             margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #0d6efd, #00d2ff);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(13, 110, 253, 0.08);
         }
 
         .card h2 { 
-            color: var(--azul-principal); 
+            color: var(--azul-oscuro); 
             margin-bottom: 1.2rem; 
-            border-bottom: 2px solid var(--gris-claro); 
-            padding-bottom: 0.5rem; 
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.8rem;
         }
 
         .card p {
             font-size: 1.05rem;
-            color: #444;
-            margin-bottom: 0.8rem;
+            color: #334155;
+            line-height: 1.8;
+        }
+
+        /* CORREO DESTACADO COMO BOTON/BADGE */
+        .correo-box {
+            display: inline-block;
+            background: var(--azul-light);
+            padding: 10px 18px;
+            border-radius: 12px;
+            border: 1px solid #bfdbfe;
+            margin: 8px 0;
         }
 
         .correo-link {
             color: var(--azul-principal);
-            font-weight: bold;
+            font-weight: 800;
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: color 0.2s ease;
+        }
+
+        .correo-link:hover {
+            color: #0a58ca;
             text-decoration: underline;
+        }
+
+        /* BADGES CATEGORIAS */
+        .categorias-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .badge-categoria {
+            background: var(--azul-light);
+            color: var(--azul-principal);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 1px solid #bfdbfe;
         }
 
         footer { 
             text-align: center; 
-            padding: 1.5rem; 
+            padding: 1.8rem; 
             background-color: var(--azul-oscuro); 
             color: var(--blanco); 
             font-size: 0.9rem; 
+            margin-top: 3rem;
         }
     </style>
 </head>
@@ -121,20 +205,35 @@
     </header>
 
     <div class="container">
+
+        <div class="page-header">
+            <h1>🏆 Centro de Torneos</h1>
+        </div>
         
         <section class="card">
-            <h2>Próximos Torneos</h2>
+            <h2>📅 Próximos Torneos</h2>
             <p>Aquí se publicarán las fechas, rondas, bases del torneo y enfrentamientos oficiales.</p>
         </section>
 
         <section class="card">
-            <h2>¿Cómo me puedo inscribir al grupo de Ajedrez?</h2>
-            <p>Para poder inscribirte al grupo de Ajedrez, deberás mandar un mensaje al correo: <a href="mailto:62945995@sda.edu.pe" class="correo-link">62945995@sda.edu.pe</a> poniendo tu usuario de Chess.com, tu nombre completo, grado y sección, mínimo haber jugado 10 partidas rápidas (10 minutos) y tu elo para el momento en el que se envía el correo, no olvidar enviar el correo con cuenta institucional (del colegio).</p>
+            <h2>📩 ¿Cómo me puedo inscribir al grupo de Ajedrez?</h2>
+            <p>
+                Para poder inscribirte al grupo de Ajedrez, deberás mandar un mensaje al correo: 
+                <span class="correo-box">
+                    ✉️ <a href="mailto:62945995@sda.edu.pe" class="correo-link">62945995@sda.edu.pe</a>
+                </span> 
+                poniendo tu usuario de Chess.com, tu nombre completo, grado y sección, mínimo haber jugado 10 partidas rápidas (10 minutos) y tu elo para el momento en el que se envía el correo, no olvidar enviar el correo con cuenta institucional (del colegio).
+            </p>
         </section>
 
         <section class="card">
-            <h2>¿Cómo puedo participar en un torneo?</h2>
-            <p>Para poder participar, debes entrar al top 4 de los mejores jugadores de tu categoría: Menores, pre-juvenil y juvenil.</p>
+            <h2>⚔️ ¿Cómo puedo participar en un torneo?</h2>
+            <p>Para poder participar, debes entrar al top 4 de los mejores jugadores de tu categoría:</p>
+            <div class="categorias-badges">
+                <span class="badge-categoria">🥉 Menores</span>
+                <span class="badge-categoria">🥈 Pre-juvenil</span>
+                <span class="badge-categoria">🥇 Juvenil</span>
+            </div>
         </section>
 
     </div>
