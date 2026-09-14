@@ -7,13 +7,17 @@
     <style>
         :root { 
             --azul-principal: #0d6efd; 
+            --azul-hover: #00b4d8;
             --azul-oscuro: #0a192f; 
             --azul-marino: #1e293b;
+            --sidebar-bg: #161f33;
+            --sidebar-hover: #222e48;
             --azul-light: #eef6ff;
             --blanco: #ffffff; 
             --gris-fondo: #f8fafc; 
             --gris-borde: #cbd5e1;
             --texto-oscuro: #0f172a;
+            --sidebar-width: 175px;
         }
 
         * { 
@@ -28,55 +32,103 @@
             color: var(--texto-oscuro); 
             line-height: 1.6; 
             min-height: 100vh;
+            display: flex;
         }
 
-        /* HEADER sticky */
-        header { 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(10px);
-            border-bottom: 3px solid var(--azul-principal); 
-            padding: 0.8rem 5%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            position: sticky; 
+        /* SIDEBAR COMPACTO ESTILO CHESS.COM */
+        aside.sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--sidebar-bg);
+            height: 100vh;
+            position: fixed; 
             top: 0; 
-            z-index: 100; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            left: 0;
+            display: flex; 
+            flex-direction: column;
+            padding: 1rem 0.6rem;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.15);
+            z-index: 100;
         }
 
-        .logo-container { 
+        .sidebar-brand { 
             display: flex; 
             align-items: center; 
-            gap: 12px; 
+            gap: 8px; 
+            padding-bottom: 1rem; 
+            margin-bottom: 0.8rem; 
+            padding-left: 0.4rem; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
         }
 
-        .logo-img { 
-            height: 50px; 
-            width: auto; 
-            object-fit: contain; 
+        .sidebar-brand img { 
+            width: 30px; 
+            height: auto; 
+            border-radius: 6px; 
         }
 
-        nav a { 
-            color: var(--azul-oscuro); 
+        .sidebar-brand h2 { 
+            color: #ffffff; 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            letter-spacing: 0.5px; 
+        }
+
+        nav.sidebar-nav { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 4px; 
+            flex-grow: 1; 
+        }
+
+        nav.sidebar-nav a { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #94a3b8; 
             text-decoration: none; 
-            margin-left: 20px; 
+            padding: 8px 12px; 
+            border-radius: 8px; 
             font-weight: 700; 
-            transition: all 0.3s ease;
-            padding: 6px 14px;
-            border-radius: 8px;
+            font-size: 0.85rem; 
+            transition: all 0.2s ease; 
         }
 
-        nav a.active, nav a:hover { 
-            color: var(--azul-principal); 
-            background: var(--azul-light);
+        nav.sidebar-nav a:hover { 
+            background-color: var(--sidebar-hover); 
+            color: #ffffff; 
+        }
+
+        nav.sidebar-nav a.active { 
+            background-color: var(--azul-principal); 
+            color: #ffffff; 
+            box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3); 
+        }
+
+        .sidebar-nav .icon { 
+            font-size: 1rem; 
+            width: 18px; 
+            text-align: center; 
+        }
+
+        .sidebar-footer { 
+            padding-top: 0.8rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.08); 
+            color: #64748b; 
+            font-size: 0.68rem; 
+            text-align: center; 
+        }
+
+        /* CONTENIDO PRINCIPAL ADAPTADO AL SIDEBAR */
+        main.main-content {
+            margin-left: var(--sidebar-width);
+            flex-grow: 1;
+            padding: 2.5rem 2rem;
+            min-height: 100vh;
         }
 
         .container { 
             max-width: 900px; 
-            margin: 3rem auto; 
-            padding: 0 20px; 
-            min-height: calc(100vh - 230px);
+            margin: 0 auto; 
         }
 
         /* BANNER TITULO */
@@ -178,69 +230,69 @@
             border: 1px solid #bfdbfe;
         }
 
-        footer { 
-            text-align: center; 
-            padding: 1.8rem; 
-            background-color: var(--azul-oscuro); 
-            color: var(--blanco); 
-            font-size: 0.9rem; 
-            margin-top: 3rem;
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            aside.sidebar { width: 100%; height: auto; position: relative; }
+            main.main-content { margin-left: 0; padding: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="logo-colegio.jpg" alt="Logo Club P.E.P." class="logo-img">
+    <!-- SIDEBAR ESTILO CHESS.COM -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <img src="logo-colegio.jpg" alt="Logo P.E.P.">
             <h2>P.E.P.</h2>
         </div>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="datos.html">Datos</a>
-            <a href="aperturas.html">Aperturas</a>
-            <a href="torneo.html" class="active">Torneo</a>
-            <a href="clasificacion.html">Estadísticas</a>
+        <nav class="sidebar-nav">
+            <a href="index.html"><span class="icon">🏠</span> Inicio</a>
+            <a href="datos.html"><span class="icon">📋</span> Datos</a>
+            <a href="aperturas.html"><span class="icon">📖</span> Aperturas</a>
+            <a href="torneo.html" class="active"><span class="icon">🏆</span> Torneo</a>
+            <a href="clasificacion.html"><span class="icon">📊</span> Estadísticas</a>
         </nav>
-    </header>
-
-    <div class="container">
-
-        <div class="page-header">
-            <h1>🏆 Centro de Torneos</h1>
+        <div class="sidebar-footer">
+            <p>&copy; 2026 SDA Ajedrez</p>
         </div>
-        
-        <section class="card">
-            <h2>📅 Próximos Torneos</h2>
-            <p>Aquí se publicarán las fechas, rondas, bases del torneo y enfrentamientos oficiales.</p>
-        </section>
+    </aside>
 
-        <section class="card">
-            <h2>📩 ¿Cómo me puedo inscribir al grupo de Ajedrez?</h2>
-            <p>
-                Para poder inscribirte al grupo de Ajedrez, deberás mandar un mensaje al correo: 
-                <span class="correo-box">
-                    ✉️ <a href="mailto:62945995@sda.edu.pe" class="correo-link">62945995@sda.edu.pe</a>
-                </span> 
-                poniendo tu usuario de Chess.com, tu nombre completo, grado y sección, mínimo haber jugado 10 partidas rápidas (10 minutos) y tu elo para el momento en el que se envía el correo, no olvidar enviar el correo con cuenta institucional (del colegio).
-            </p>
-        </section>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+        <div class="container">
 
-        <section class="card">
-            <h2>⚔️ ¿Cómo puedo participar en un torneo?</h2>
-            <p>Para poder participar, debes entrar al top 4 de los mejores jugadores de tu categoría:</p>
-            <div class="categorias-badges">
-                <span class="badge-categoria">🥉 Menores</span>
-                <span class="badge-categoria">🥈 Pre-juvenil</span>
-                <span class="badge-categoria">🥇 Juvenil</span>
+            <div class="page-header">
+                <h1>🏆 Centro de Torneos</h1>
             </div>
-        </section>
+            
+            <section class="card">
+                <h2>📅 Próximos Torneos</h2>
+                <p>Aquí se publicarán las fechas, rondas, bases del torneo y enfrentamientos oficiales.</p>
+            </section>
 
-    </div>
+            <section class="card">
+                <h2>📩 ¿Cómo me puedo inscribir al grupo de Ajedrez?</h2>
+                <p>
+                    Para poder inscribirte al grupo de Ajedrez, deberás mandar un mensaje al correo: 
+                    <span class="correo-box">
+                        ✉️ <a href="mailto:62945995@sda.edu.pe" class="correo-link">62945995@sda.edu.pe</a>
+                    </span> 
+                    poniendo tu usuario de Chess.com, tu nombre completo, grado y sección, mínimo haber jugado 10 partidas rápidas (10 minutos) y tu elo para el momento en el que se envía el correo, no olvidar enviar el correo con cuenta institucional (del colegio).
+                </p>
+            </section>
 
-    <footer>
-        <p>&copy; 2026 Club de Ajedrez P.E.P. - Colegio Santo Domingo, el Apóstol</p>
-    </footer>
+            <section class="card">
+                <h2>⚔️ ¿Cómo puedo participar en un torneo?</h2>
+                <p>Para poder participar, debes entrar al top 4 de los mejores jugadores de tu categoría:</p>
+                <div class="categorias-badges">
+                    <span class="badge-categoria">🥉 Menores</span>
+                    <span class="badge-categoria">🥈 Pre-juvenil</span>
+                    <span class="badge-categoria">🥇 Juvenil</span>
+                </div>
+            </section>
+
+        </div>
+    </main>
 
 </body>
 </html>
