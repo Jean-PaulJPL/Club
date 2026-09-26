@@ -650,8 +650,8 @@
                         <tr data-username="grecia_helenia">
                             <td class="jugador-nombre"><span class="nombre-texto">Grecia Salguero</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>0</td>
+                            <td>0</td>
                             <td>1</td>
                             <td>1</td>
                             <td><span class="badge-grado">PRE5</span></td>
@@ -666,7 +666,7 @@
         </div>
     </main>
 
-    <!-- SCRIPT DE CARGA Y ORDENAMIENTO EN VIVO -->
+    <!-- SCRIPT DE CARGA Y ORDENAMIENTO EN VIVO CORREGIDO -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const tbody = document.querySelector('#tabla-jugadores tbody');
@@ -698,16 +698,16 @@
 
                     if (!tdNombre || !badgeElo) return;
 
-                    // Limpiar badges antiguos de puesto si los hubiera
-                    const badgeExistente = tdNombre.querySelector('.puesto-badge');
-                    if (badgeExistente) badgeExistente.remove();
+                    // CORRECCIÓN: Limpiar TODOS los badges antiguos de puesto para evitar duplicados
+                    const badgesExistentes = tdNombre.querySelectorAll('.puesto-badge');
+                    badgesExistentes.forEach(badge => badge.remove());
 
                     // Limpiar clases de highlight de Elo
                     badgeElo.classList.remove('top-1-elo', 'top-2-elo', 'top-3-elo');
 
                     const valElo = parseInt(badgeElo.textContent);
 
-                    // Solo asignar puesto a jugadores con Elo válido
+                    // Asignar puesto solo a jugadores con Elo válido
                     if (!isNaN(valElo) && valElo > 0) {
                         const puestoSpan = document.createElement('span');
                         puestoSpan.classList.add('puesto-badge');
