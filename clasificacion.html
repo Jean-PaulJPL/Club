@@ -211,11 +211,10 @@
             gap: 10px;
         }
 
-        /* TABLA MODERNA */
+        /* TABLA CORREGIDA (LÍNEAS LIMPIAS) */
         .tabla-torneo {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 10px;
+            border-collapse: collapse; /* CORRECCIÓN: Colapsa líneas duplicadas */
             font-size: 0.92rem;
         }
 
@@ -230,38 +229,21 @@
             border: none;
         }
 
-        .tabla-torneo th:first-child { border-radius: 12px 0 0 12px; }
-        .tabla-torneo th:last-child { border-radius: 0 12px 12px 0; }
-
         .tabla-torneo tbody tr {
             background-color: var(--blanco);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-            transition: all 0.25s ease;
-            border-radius: 10px;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--gris-borde); /* Línea limpia por cada fila */
         }
 
         .tabla-torneo tbody tr:hover {
             background-color: var(--azul-light);
-            transform: scale(1.008);
-            box-shadow: 0 6px 15px rgba(13, 110, 253, 0.08);
         }
 
         .tabla-torneo td {
             padding: 14px 10px;
             text-align: center;
-            border-top: 1px solid var(--gris-borde);
-            border-bottom: 1px solid var(--gris-borde);
             vertical-align: middle;
-        }
-
-        .tabla-torneo td:first-child {
-            border-left: 1px solid var(--gris-borde);
-            border-radius: 10px 0 0 10px;
-        }
-
-        .tabla-torneo td:last-child {
-            border-right: 1px solid var(--gris-borde);
-            border-radius: 0 10px 10px 0;
+            border: none; /* CORRECCIÓN: Quita bordes individuales */
         }
 
         .jugador-nombre {
@@ -310,17 +292,15 @@
             font-size: 0.9rem;
         }
 
-        /* Top 4 al 10: Negro/Gris Oscuro */
         .puesto-badge.top-4-10 {
             background-color: #1e293b;
-            border: 2px solid #334155;
+            border: 1px solid #334155;
             color: #ffffff;
         }
 
-        /* Top 11 en adelante: Rojo */
         .puesto-badge.top-11-mas {
             background-color: #dc2626;
-            border: 2px solid #ef4444;
+            border: 1px solid #ef4444;
             color: #ffffff;
         }
 
@@ -650,8 +630,8 @@
                         <tr data-username="grecia_helenia">
                             <td class="jugador-nombre"><span class="nombre-texto">Grecia Salguero</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td>-</td>
+                            <td>-</td>
                             <td>1</td>
                             <td>1</td>
                             <td><span class="badge-grado">PRE5</span></td>
@@ -666,7 +646,7 @@
         </div>
     </main>
 
-    <!-- SCRIPT DE CARGA Y ORDENAMIENTO EN VIVO CORREGIDO -->
+    <!-- JS -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const tbody = document.querySelector('#tabla-jugadores tbody');
@@ -677,7 +657,6 @@
             function ordenarTabla() {
                 const filasConElo = Array.from(tbody.querySelectorAll('tr'));
 
-                // Ordenar descendentemente por Elo
                 filasConElo.sort((a, b) => {
                     const badgeA = a.querySelector('.badge-elo');
                     const badgeB = b.querySelector('.badge-elo');
@@ -698,16 +677,13 @@
 
                     if (!tdNombre || !badgeElo) return;
 
-                    // CORRECCIÓN: Limpiar TODOS los badges antiguos de puesto para evitar duplicados
                     const badgesExistentes = tdNombre.querySelectorAll('.puesto-badge');
                     badgesExistentes.forEach(badge => badge.remove());
 
-                    // Limpiar clases de highlight de Elo
                     badgeElo.classList.remove('top-1-elo', 'top-2-elo', 'top-3-elo');
 
                     const valElo = parseInt(badgeElo.textContent);
 
-                    // Asignar puesto solo a jugadores con Elo válido
                     if (!isNaN(valElo) && valElo > 0) {
                         const puestoSpan = document.createElement('span');
                         puestoSpan.classList.add('puesto-badge');
@@ -737,7 +713,6 @@
                     }
                 });
                 
-                // Actualizar tarjeta del máximo Elo
                 const primeraFila = tbody.querySelector('tr');
                 if (primeraFila) {
                     const maxElo = primeraFila.querySelector('.badge-elo')?.textContent;
