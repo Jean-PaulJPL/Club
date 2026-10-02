@@ -87,6 +87,23 @@
         nav.sidebar-nav a.active { background-color: var(--azul-principal); color: #ffffff; box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3); }
         .sidebar-nav .icon { font-size: 1rem; width: 18px; text-align: center; }
 
+        /* ESTILO DESTACADO PARA REGISTRARSE */
+        nav.sidebar-nav a.btn-sidebar-registro {
+            margin-top: 8px;
+            background: linear-gradient(135deg, #0d6efd, #0a58ca);
+            color: #ffffff;
+            border-radius: 8px;
+            font-weight: 800;
+            box-shadow: 0 4px 10px rgba(13, 110, 253, 0.35);
+        }
+
+        nav.sidebar-nav a.btn-sidebar-registro:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #0b5ed7, #084298);
+            box-shadow: 0 6px 14px rgba(13, 110, 253, 0.5);
+            color: #ffffff;
+        }
+
         .sidebar-footer { padding-top: 0.8rem; border-top: 1px solid rgba(255, 255, 255, 0.08); color: #64748b; font-size: 0.68rem; text-align: center; }
 
         /* CONTENIDO PRINCIPAL */
@@ -188,6 +205,9 @@
             <a href="aperturas.html"><span class="icon">📖</span> Aperturas</a>
             <a href="torneo.html"><span class="icon">🏆</span> Torneo</a>
             <a href="clasificacion.html"><span class="icon">📊</span> Estadísticas</a>
+            
+            <!-- OPCIÓN REGISTRARSE -->
+            <a href="registro.html" class="btn-sidebar-registro"><span class="icon">👤</span> Registrarse</a>
         </nav>
         <div class="sidebar-footer">
             <p>&copy; 2026 SDA Ajedrez</p>
