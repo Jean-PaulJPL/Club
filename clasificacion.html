@@ -113,9 +113,54 @@
             text-align: center; 
         }
 
+        /* SECCIÓN DE PERFIL (IZQUIERDA ABAJO EN EL SIDEBAR) */
+        .sidebar-user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.6rem 0.4rem;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 0.5rem;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--azul-principal);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .user-name {
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .user-role {
+            color: #94a3b8;
+            font-size: 0.68rem;
+        }
+
         .sidebar-footer { 
-            padding-top: 0.8rem; 
-            border-top: 1px solid rgba(255, 255, 255, 0.08); 
+            padding-top: 0.4rem; 
             color: #64748b; 
             font-size: 0.68rem; 
             text-align: center; 
@@ -396,6 +441,16 @@
             <a href="torneo.html"><span class="icon">🏆</span> Torneo</a>
             <a href="clasificacion.html" class="active"><span class="icon">📊</span> Estadísticas</a>
         </nav>
+        
+        <!-- SECCIÓN PERFIL DE USUARIO ABAJO A LA IZQUIERDA -->
+        <div class="sidebar-user-profile">
+            <div class="user-avatar">👤</div>
+            <div class="user-info">
+                <span class="user-name">Usuario</span>
+                <span class="user-role">SDA Jugador</span>
+            </div>
+        </div>
+
         <div class="sidebar-footer">
             <p>&copy; 2026 SDA Ajedrez</p>
         </div>
