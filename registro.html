@@ -3,214 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P.E.P. - Registro de Jugador</title>
+    <title>Registro - P.E.P. Ajedrez</title>
     <style>
         :root {
             --azul-principal: #0d6efd;
-            --azul-oscuro: #0a192f;
-            --sidebar-bg: #161f33;
+            --azul-oscuro: #0a0f1d;
             --blanco: #ffffff;
-            --gris-fondo: #f1f5f9;
             --gris-borde: #cbd5e1;
             --texto-oscuro: #0f172a;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
         body {
-            background: linear-gradient(135deg, #0a192f 0%, #1e293b 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            align-items: center;
+            padding: 20px;
         }
 
-        .registro-card {
+        .register-card {
             background: var(--blanco);
-            width: 100%;
-            max-width: 450px;
             padding: 2.5rem;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .registro-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .registro-header img {
-            width: 50px;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-        }
-
-        .registro-header h2 {
-            color: var(--azul-oscuro);
-            font-size: 1.6rem;
-            font-weight: 800;
-        }
-
-        .registro-header p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.4rem;
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--texto-oscuro);
-        }
-
-        .form-group input, .form-group select {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             width: 100%;
-            padding: 10px 14px;
-            border: 1px solid var(--gris-borde);
-            border-radius: 8px;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        .logo { width: 70px; height: auto; margin-bottom: 12px; }
+
+        h1 { font-size: 1.8rem; color: var(--texto-oscuro); font-weight: 800; margin-bottom: 4px; }
+        p.subtitle { color: #64748b; font-size: 0.9rem; margin-bottom: 24px; }
+
+        .form-group { text-align: left; margin-bottom: 16px; }
+        label { display: block; font-weight: 700; font-size: 0.88rem; color: var(--texto-oscuro); margin-bottom: 6px; }
+
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--gris-borde);
+            border-radius: 10px;
             font-size: 0.95rem;
             outline: none;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s ease;
         }
 
-        .form-group input:focus, .form-group select:focus {
-            border-color: var(--azul-principal);
-        }
+        input:focus { border-color: var(--azul-principal); }
 
-        .btn-registro {
+        .btn-submit {
             width: 100%;
-            background: linear-gradient(135deg, #0d6efd, #0a58ca);
-            color: white;
+            background: var(--azul-principal);
+            color: var(--blanco);
             border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 800;
+            padding: 14px;
+            border-radius: 12px;
             font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin-top: 0.5rem;
-        }
-
-        .btn-registro:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
-        }
-
-        .login-link {
-            text-align: center;
-            margin-top: 1.5rem;
-            font-size: 0.85rem;
-            color: #64748b;
-        }
-
-        .login-link a {
-            color: var(--azul-principal);
-            text-decoration: none;
             font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s ease;
         }
 
-        .alert-message {
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            display: none;
-        }
-
-        .alert-error { background: #fee2e2; color: #991b1b; }
-        .alert-success { background: #dcfce7; color: #166534; }
+        .btn-submit:hover { background: #0b5ed7; }
     </style>
 </head>
 <body>
 
-    <div class="registro-card">
-        <div class="registro-header">
-            <img src="logo-colegio.jpg" alt="Logo P.E.P.">
-            <h2>Únete a P.E.P. Ajedrez</h2>
-            <p>Crea tu cuenta e intégrate a la tabla general</p>
-        </div>
+    <div class="register-card">
+        <img src="logo-colegio.jpg" alt="Logo P.E.P." class="logo">
+        <h1>Únete a P.E.P. Ajedrez</h1>
+        <p class="subtitle">Crea tu cuenta e intégrate a la tabla general</p>
 
-        <div id="alert" class="alert-message"></div>
-
-        <form id="registroForm">
+        <form id="registerForm">
             <div class="form-group">
-                <label for="nombre">Nombre y Apellido</label>
-                <input type="text" id="nombre" placeholder="Ej. Ana Salinas" required>
+                <label for="username">Nombre de la cuenta</label>
+                <input type="text" id="username" required>
             </div>
 
             <div class="form-group">
-                <label for="username">Usuario de Chess.com</label>
-                <input type="text" id="username" placeholder="Ej. anneuusss" required>
+                <label for="age">Edad</label>
+                <input type="number" id="age" min="5" max="100" required>
             </div>
 
             <div class="form-group">
-                <label for="grado">Grado / Aula</label>
-                <select id="grado" required>
-                    <option value="">Selecciona tu grado</option>
-                    <option value="1D">1D</option>
-                    <option value="2A">2A</option>
-                    <option value="3A">3A</option>
-                    <option value="3B">3B</option>
-                    <option value="3C">3C</option>
-                    <option value="3D">3D</option>
-                    <option value="3E">3E</option>
-                    <option value="PRE5">PRE5</option>
-                </select>
+                <label for="location">País y departamento</label>
+                <input type="text" id="location" required>
             </div>
 
             <div class="form-group">
                 <label for="password">Contraseña</label>
-                <input type="password" id="password" placeholder="••••••••" required>
+                <input type="password" id="password" required>
             </div>
 
-            <button type="submit" class="btn-registro">Crear Cuenta</button>
+            <button type="submit" class="btn-submit">Crear Cuenta</button>
         </form>
-
-        <div class="login-link">
-            ¿Ya tienes una cuenta? <a href="#">Inicia sesión</a>
-        </div>
     </div>
 
     <script>
-        document.getElementById('registroForm').addEventListener('submit', async (e) => {
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const username = document.getElementById('username').value.trim();
-            const alertBox = document.getElementById('alert');
+            // Guardar datos del usuario
+            const user = {
+                username: document.getElementById('username').value,
+                age: document.getElementById('age').value,
+                location: document.getElementById('location').value,
+            };
 
-            // Validar si el usuario existe en la API de Chess.com antes de registrar
-            try {
-                const res = await fetch(`https://api.chess.com/pub/player/${username}`);
-                if (!res.ok) {
-                    alertBox.className = 'alert-message alert-error';
-                    alertBox.textContent = 'El usuario de Chess.com no existe. Verifica el nombre.';
-                    alertBox.style.display = 'block';
-                    return;
-                }
+            localStorage.setItem('pep_user', JSON.stringify(user));
 
-                // Si existe el usuario de Chess.com
-                alertBox.className = 'alert-message alert-success';
-                alertBox.textContent = '¡Registro exitoso! Validando perfil de Chess.com...';
-                alertBox.style.display = 'block';
-
-                // Aquí iría el código para enviar los datos a tu Base de Datos (Firebase / Supabase / Backend)
-
-            } catch (err) {
-                alertBox.className = 'alert-message alert-error';
-                alertBox.textContent = 'Error al conectar con la API de Chess.com';
-                alertBox.style.display = 'block';
-            }
+            // Redirigir al inicio
+            window.location.href = 'index.html';
         });
     </script>
 </body>
