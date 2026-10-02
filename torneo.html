@@ -110,6 +110,53 @@
             text-align: center; 
         }
 
+        /* ESTILO BOTÓN REGISTRARSE */
+        nav.sidebar-nav a.btn-sidebar-registro {
+            margin-top: 8px;
+            background: linear-gradient(135deg, #0d6efd, #0a58ca);
+            color: #ffffff;
+            border-radius: 8px;
+            font-weight: 800;
+            box-shadow: 0 4px 10px rgba(13, 110, 253, 0.35);
+        }
+
+        /* PERFIL DE USUARIO ABAJO (ESTILO CHESS.COM) */
+        .user-profile-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .user-profile-box:hover { background: var(--sidebar-hover); }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background: var(--azul-principal);
+            color: #ffffff;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .user-name {
+            color: #ffffff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
         .sidebar-footer { 
             padding-top: 0.8rem; 
             border-top: 1px solid rgba(255, 255, 255, 0.08); 
@@ -251,7 +298,18 @@
             <a href="aperturas.html"><span class="icon">📖</span> Aperturas</a>
             <a href="torneo.html" class="active"><span class="icon">🏆</span> Torneo</a>
             <a href="clasificacion.html"><span class="icon">📊</span> Estadísticas</a>
+
+            <a href="registro.html" id="nav-register-btn" class="btn-sidebar-registro"><span class="icon">👤</span> Registrarse</a>
         </nav>
+
+        <!-- CAJA DE USUARIO ABAJO A LA IZQUIERDA -->
+        <div id="user-profile-container" style="display: none;">
+            <div class="user-profile-box">
+                <div class="user-avatar" id="user-avatar-initial">U</div>
+                <span class="user-name" id="user-display-name">Usuario</span>
+            </div>
+        </div>
+
         <div class="sidebar-footer">
             <p>&copy; 2026 SDA Ajedrez</p>
         </div>
@@ -293,6 +351,31 @@
 
         </div>
     </main>
+
+    <script>
+        // COMPROBAR SESIÓN DE USUARIO AL CARGAR
+        window.addEventListener('DOMContentLoaded', () => {
+            const userData = localStorage.getItem('pep_user');
+            if (userData) {
+                const user = JSON.parse(userData);
+                
+                // Ocultar opción "Registrarse"
+                const regBtn = document.getElementById('nav-register-btn');
+                if (regBtn) regBtn.style.display = 'none';
+
+                // Mostrar tarjeta de usuario en la parte inferior del menú
+                const profileContainer = document.getElementById('user-profile-container');
+                const avatarEl = document.getElementById('user-avatar-initial');
+                const nameEl = document.getElementById('user-display-name');
+
+                if (profileContainer && avatarEl && nameEl) {
+                    avatarEl.textContent = user.username.charAt(0).toUpperCase();
+                    nameEl.textContent = user.username;
+                    profileContainer.style.display = 'block';
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>
