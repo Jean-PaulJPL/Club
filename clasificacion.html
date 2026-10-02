@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P.E.P. - Estadísticas</title>
+    <title>P.E.P. - Clasificación y Estadísticas</title>
     <style>
         :root { 
             --azul-principal: #0d6efd; 
@@ -17,10 +17,10 @@
             --plata: #94a3b8;
             --bronce: #d97706;
             --blanco: #ffffff; 
-            --gris-fondo: #f1f5f9; 
+            --gris-fondo: #f8fafc; 
             --gris-borde: #e2e8f0;
             --texto-oscuro: #0f172a;
-            --sidebar-width: 175px;
+            --sidebar-width: 200px;
         }
 
         * { 
@@ -38,7 +38,7 @@
             display: flex;
         }
 
-        /* SIDEBAR COMPACTO ESTILO CHESS.COM */
+        /* SIDEBAR UNIFICADO CON EL RESTO DEL PROYECTO */
         aside.sidebar {
             width: var(--sidebar-width);
             background-color: var(--sidebar-bg);
@@ -48,7 +48,7 @@
             left: 0;
             display: flex; 
             flex-direction: column;
-            padding: 1rem 0.6rem;
+            padding: 1.2rem 0.8rem;
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.15);
             z-index: 100;
         }
@@ -56,22 +56,22 @@
         .sidebar-brand { 
             display: flex; 
             align-items: center; 
-            gap: 8px; 
-            padding-bottom: 1rem; 
-            margin-bottom: 0.8rem; 
-            padding-left: 0.4rem; 
+            gap: 10px; 
+            padding-bottom: 1.2rem; 
+            margin-bottom: 1rem; 
+            padding-left: 0.5rem; 
             border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
         }
 
         .sidebar-brand img { 
-            width: 30px; 
+            width: 32px; 
             height: auto; 
             border-radius: 6px; 
         }
 
         .sidebar-brand h2 { 
             color: #ffffff; 
-            font-size: 1.1rem; 
+            font-size: 1.15rem; 
             font-weight: 800; 
             letter-spacing: 0.5px; 
         }
@@ -79,7 +79,7 @@
         nav.sidebar-nav { 
             display: flex; 
             flex-direction: column; 
-            gap: 4px; 
+            gap: 6px; 
             flex-grow: 1; 
         }
 
@@ -89,10 +89,10 @@
             gap: 10px; 
             color: #94a3b8; 
             text-decoration: none; 
-            padding: 8px 12px; 
+            padding: 10px 12px; 
             border-radius: 8px; 
-            font-weight: 700; 
-            font-size: 0.85rem; 
+            font-weight: 600; 
+            font-size: 0.88rem; 
             transition: all 0.2s ease; 
         }
 
@@ -107,36 +107,31 @@
             box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3); 
         }
 
-        .sidebar-nav .icon { 
-            font-size: 1rem; 
-            width: 18px; 
-            text-align: center; 
-        }
-
-        /* SECCIÓN DE PERFIL (IZQUIERDA ABAJO EN EL SIDEBAR) */
+        /* SECCIÓN PERFIL ABAJO A LA IZQUIERDA */
         .sidebar-user-profile {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 0.6rem 0.4rem;
+            padding: 0.8rem 0.6rem;
             margin-top: auto;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             margin-bottom: 0.5rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .user-avatar {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
-            background-color: var(--azul-principal);
+            background: linear-gradient(135deg, var(--azul-principal), #00b4d8);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 0.85rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+            flex-shrink: 0;
         }
 
         .user-info {
@@ -147,7 +142,7 @@
 
         .user-name {
             color: #ffffff;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             font-weight: 700;
             white-space: nowrap;
             overflow: hidden;
@@ -156,128 +151,104 @@
 
         .user-role {
             color: #94a3b8;
-            font-size: 0.68rem;
+            font-size: 0.7rem;
         }
 
         .sidebar-footer { 
-            padding-top: 0.4rem; 
+            padding-top: 0.5rem; 
             color: #64748b; 
-            font-size: 0.68rem; 
+            font-size: 0.7rem; 
             text-align: center; 
         }
 
-        /* CONTENIDO PRINCIPAL ADAPTADO */
+        /* CONTENIDO PRINCIPAL */
         main.main-content {
             margin-left: var(--sidebar-width);
             flex-grow: 1;
-            padding: 2.5rem 2rem;
+            padding: 2rem 2.5rem;
             min-height: 100vh;
         }
 
         .container { 
-            max-width: 1250px; 
+            max-width: 1200px; 
             margin: 0 auto; 
         }
 
-        /* STATS GRID */
+        /* TARJETAS DE ESTADÍSTICAS */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
         }
 
         .stat-card {
             background: var(--blanco);
-            padding: 1.5rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            padding: 1.4rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid var(--gris-borde);
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background: linear-gradient(90deg, #0d6efd, #00d2ff);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 30px rgba(13, 110, 253, 0.12);
         }
 
         .stat-number {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #0a192f, #0d6efd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--azul-oscuro);
             margin-bottom: 0.2rem;
         }
 
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: #64748b;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.5px;
         }
 
-        /* CARD TABLA */
+        /* TARJETA CONTENEDORA DE TABLA */
         .card { 
             background: var(--blanco); 
-            padding: 2rem; 
-            border-radius: 20px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.04); 
+            padding: 1.8rem; 
+            border-radius: 14px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04); 
             border: 1px solid var(--gris-borde);
             overflow-x: auto;
         }
 
         .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--gris-fondo);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--gris-borde);
         }
 
         .card h2 { 
             color: var(--azul-oscuro); 
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
-        /* TABLA CORREGIDA (LÍNEAS LIMPIAS) */
+        /* TABLA MANTENIENDO EL ESTILO LIMPIO DE DATOS */
         .tabla-torneo {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.92rem;
+            font-size: 0.9rem;
         }
 
         .tabla-torneo th {
             background-color: var(--azul-oscuro);
             color: var(--blanco);
-            padding: 16px 12px;
+            padding: 12px 10px;
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.78rem;
-            letter-spacing: 1px;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
             border: none;
         }
 
         .tabla-torneo tbody tr {
-            background-color: var(--blanco);
-            transition: all 0.2s ease;
             border-bottom: 1px solid var(--gris-borde);
+            transition: background 0.2s ease;
         }
 
         .tabla-torneo tbody tr:hover {
@@ -285,7 +256,7 @@
         }
 
         .tabla-torneo td {
-            padding: 14px 10px;
+            padding: 12px 10px;
             text-align: center;
             vertical-align: middle;
             border: none;
@@ -295,154 +266,106 @@
             text-align: left !important;
             font-weight: 700;
             color: var(--azul-oscuro);
-            font-size: 0.98rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        /* ESTILOS DE BADGES DE PUESTO */
+        /* PUESTOS EN TABLA */
         .puesto-badge {
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 800;
             color: white;
             flex-shrink: 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        .puesto-badge.top-1 {
-            background: linear-gradient(135deg, #ffe066, #ffc107);
-            color: #5c4000;
-            box-shadow: 0 3px 8px rgba(255, 193, 7, 0.5);
-            font-size: 0.9rem;
-        }
+        .puesto-badge.top-1 { background-color: var(--dorado); color: #5c4000; }
+        .puesto-badge.top-2 { background-color: #cbd5e1; color: #1e293b; }
+        .puesto-badge.top-3 { background-color: var(--bronce); color: #ffffff; }
+        .puesto-badge.top-4-10 { background-color: var(--azul-marino); color: #ffffff; }
+        .puesto-badge.top-11-mas { background-color: #ef4444; color: #ffffff; }
 
-        .puesto-badge.top-2 {
-            background: linear-gradient(135deg, #e2e8f0, #94a3b8);
-            color: #1e293b;
-            box-shadow: 0 3px 8px rgba(148, 163, 184, 0.4);
-            font-size: 0.9rem;
-        }
-
-        .puesto-badge.top-3 {
-            background: linear-gradient(135deg, #fcd34d, #d97706);
-            color: #451a03;
-            box-shadow: 0 3px 8px rgba(217, 119, 6, 0.4);
-            font-size: 0.9rem;
-        }
-
-        .puesto-badge.top-4-10 {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-            color: #ffffff;
-        }
-
-        .puesto-badge.top-11-mas {
-            background-color: #dc2626;
-            border: 1px solid #ef4444;
-            color: #ffffff;
-        }
-
-        /* BADGES ELO */
+        /* BADGES Y BOTONES */
         .badge-elo {
-            background: linear-gradient(135deg, #0d6efd, #0056b3);
+            background-color: var(--azul-principal);
             color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: 800;
-            font-size: 0.9rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.85rem;
             display: inline-block;
-            box-shadow: 0 3px 8px rgba(13, 110, 253, 0.3);
         }
 
-        .top-1-elo {
-            background: linear-gradient(135deg, #ffe066, #ffc107);
-            color: #5c4000;
-            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
-        }
-
-        .top-2-elo {
-            background: linear-gradient(135deg, #e2e8f0, #94a3b8);
-            color: #1e293b;
-            box-shadow: 0 4px 12px rgba(148, 163, 184, 0.3);
-        }
-
-        .top-3-elo {
-            background: linear-gradient(135deg, #fcd34d, #d97706);
-            color: #451a03;
-            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
-        }
+        .top-1-elo { background-color: var(--dorado); color: #5c4000; }
+        .top-2-elo { background-color: #94a3b8; color: #ffffff; }
+        .top-3-elo { background-color: var(--bronce); color: #ffffff; }
 
         .badge-grado {
             background-color: #f1f5f9;
             color: #475569;
-            padding: 4px 10px;
-            border-radius: 8px;
+            padding: 3px 8px;
+            border-radius: 6px;
             font-weight: 700;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             border: 1px solid #cbd5e1;
         }
 
         .apertura-tag {
             background: #ffffff;
-            color: #1e293b;
-            padding: 4px 10px;
+            color: #334155;
+            padding: 3px 8px;
             border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.78rem;
             border: 1px solid #cbd5e1;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
             display: inline-block;
         }
 
         .btn-perfil {
             display: inline-block;
-            background: linear-gradient(135deg, #0d6efd, #0a58ca);
+            background-color: var(--azul-principal);
             color: white;
-            padding: 6px 14px;
-            border-radius: 8px;
+            padding: 5px 12px;
+            border-radius: 6px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.8rem;
-            transition: all 0.2s ease;
-            box-shadow: 0 3px 8px rgba(13, 110, 253, 0.2);
+            font-weight: 600;
+            font-size: 0.78rem;
+            transition: background 0.2s ease;
         }
 
         .btn-perfil:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(13, 110, 253, 0.4);
+            background-color: #0b5ed7;
         }
 
         @media (max-width: 768px) {
             body { flex-direction: column; }
             aside.sidebar { width: 100%; height: auto; position: relative; }
-            main.main-content { margin-left: 0; padding: 1.2rem; }
+            main.main-content { margin-left: 0; padding: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SIDEBAR ESTILO CHESS.COM -->
+    <!-- SIDEBAR -->
     <aside class="sidebar">
         <div class="sidebar-brand">
             <img src="logo-colegio.jpg" alt="Logo P.E.P.">
             <h2>P.E.P.</h2>
         </div>
         <nav class="sidebar-nav">
-            <a href="index.html"><span class="icon">🏠</span> Inicio</a>
-            <a href="datos.html"><span class="icon">📋</span> Datos</a>
-            <a href="aperturas.html"><span class="icon">📖</span> Aperturas</a>
-            <a href="torneo.html"><span class="icon">🏆</span> Torneo</a>
-            <a href="clasificacion.html" class="active"><span class="icon">📊</span> Estadísticas</a>
+            <a href="index.html">🏠 Inicio</a>
+            <a href="datos.html">📋 Datos</a>
+            <a href="aperturas.html">📖 Aperturas</a>
+            <a href="torneo.html">🏆 Torneo</a>
+            <a href="clasificacion.html" class="active">📊 Clasificación</a>
         </nav>
-        
-        <!-- SECCIÓN PERFIL DE USUARIO ABAJO A LA IZQUIERDA -->
+
+        <!-- SECCIÓN PERFIL DEL JUGADOR ABAJO EN LA BARRA LATERAL -->
         <div class="sidebar-user-profile">
             <div class="user-avatar">👤</div>
             <div class="user-info">
@@ -460,7 +383,7 @@
     <main class="main-content">
         <div class="container">
 
-            <!-- RESUMEN EN TARJETAS -->
+            <!-- METRICAS / ESTADÍSTICAS -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number">17</div>
@@ -480,10 +403,10 @@
                 </div>
             </div>
 
-            <!-- TABLA -->
+            <!-- TABLA DE CLASIFICACIÓN -->
             <section class="card">
                 <div class="card-header">
-                    <h2>♟️ Tabla General de Jugadores - SDA</h2>
+                    <h2>📊 Tabla General de Jugadores - SDA</h2>
                 </div>
 
                 <table class="tabla-torneo" id="tabla-jugadores">
@@ -713,7 +636,7 @@
         </div>
     </main>
 
-    <!-- JS -->
+    <!-- SCRIPT DE CARGA Y ORDENAMIENTO -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const tbody = document.querySelector('#tabla-jugadores tbody');
