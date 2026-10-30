@@ -236,6 +236,39 @@
             line-height: 1.8;
         }
 
+        /* ESTILOS PARA LA SECCIÓN DE TORNEO DESTACADO */
+        .torneo-info-header {
+            margin-bottom: 1.2rem;
+        }
+
+        .torneo-titulo {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--azul-oscuro);
+        }
+
+        .torneo-fecha {
+            color: var(--azul-principal);
+            font-weight: 700;
+        }
+
+        .torneo-imagen-container {
+            width: 100%;
+            margin-top: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--gris-borde);
+            background-color: var(--azul-light);
+        }
+
+        .torneo-imagen-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
         /* CORREO DESTACADO COMO BOTON/BADGE */
         .correo-box {
             display: inline-block;
@@ -325,7 +358,15 @@
             
             <section class="card">
                 <h2>📅 Próximos Torneos</h2>
-                <p>Aquí se publicarán las fechas, rondas, bases del torneo y enfrentamientos oficiales.</p>
+                <div class="torneo-info-header">
+                    <p class="torneo-titulo">
+                        <strong>Primer torneo grupal de la selección</strong> 
+                        <span class="torneo-fecha">(1ro de Noviembre del 2026)</span>:
+                    </p>
+                </div>
+                <div class="torneo-imagen-container">
+                    <img src="torneo-1nov.jpg" alt="Primer torneo grupal de la selección - 1ro de Noviembre del 2026">
+                </div>
             </section>
 
             <section class="card">
