@@ -276,6 +276,37 @@
             border: none;
         }
 
+        /* ESTILO DEL FILTRO EN EL ENCABEZADO */
+        .th-jugador-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .select-filtro-ano {
+            background: transparent;
+            color: #ffffff;
+            border: none;
+            font-weight: 800;
+            font-size: 0.78rem;
+            cursor: pointer;
+            outline: none;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: background 0.2s ease;
+        }
+
+        .select-filtro-ano:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .select-filtro-ano option {
+            background-color: var(--azul-oscuro);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
         .tabla-torneo tbody tr {
             background-color: var(--blanco);
             transition: all 0.2s ease;
@@ -492,7 +523,19 @@
                 <table class="tabla-torneo" id="tabla-jugadores">
                     <thead>
                         <tr>
-                            <th>Jugador</th>
+                            <th>
+                                <div class="th-jugador-container">
+                                    <span>JUGADOR</span>
+                                    <select id="filtro-ano" class="select-filtro-ano" aria-label="Filtrar por año">
+                                        <option value="todos">▼</option>
+                                        <option value="1">1er año</option>
+                                        <option value="2">2do año</option>
+                                        <option value="3">3er año</option>
+                                        <option value="4">4to año</option>
+                                        <option value="PRE">PRE</option>
+                                    </select>
+                                </div>
+                            </th>
                             <th>Elo</th>
                             <th>V</th>
                             <th>T</th>
@@ -771,9 +814,10 @@
             const totalPeticiones = filas.filter(f => f.hasAttribute('data-username')).length;
 
             function ordenarTabla() {
-                const filasConElo = Array.from(tbody.querySelectorAll('tr'));
+                const filtroValor = document.getElementById('filtro-ano').value;
+                const filasTodas = Array.from(tbody.querySelectorAll('tr'));
 
-                filasConElo.sort((a, b) => {
+                filasTodas.sort((a, b) => {
                     const badgeA = a.querySelector('.badge-elo');
                     const badgeB = b.querySelector('.badge-elo');
 
@@ -785,8 +829,26 @@
 
                 let contadorPuesto = 1;
 
-                filasConElo.forEach((fila) => {
+                filasTodas.forEach((fila) => {
                     tbody.appendChild(fila);
+
+                    const tdGrado = fila.querySelector('.badge-grado');
+                    const gradoTexto = tdGrado ? tdGrado.textContent.trim().toUpperCase() : '';
+
+                    let coincideFiltro = false;
+                    if (filtroValor === 'todos') {
+                        coincideFiltro = true;
+                    } else if (filtroValor === 'PRE') {
+                        coincideFiltro = gradoTexto.startsWith('PRE');
+                    } else {
+                        coincideFiltro = gradoTexto.startsWith(filtroValor);
+                    }
+
+                    if (coincideFiltro) {
+                        fila.style.display = '';
+                    } else {
+                        fila.style.display = 'none';
+                    }
 
                     const tdNombre = fila.querySelector('.jugador-nombre');
                     const badgeElo = fila.querySelector('.badge-elo');
@@ -795,44 +857,45 @@
 
                     const badgesExistentes = tdNombre.querySelectorAll('.puesto-badge');
                     badgesExistentes.forEach(badge => badge.remove());
-
                     badgeElo.classList.remove('top-1-elo', 'top-2-elo', 'top-3-elo');
 
-                    const valElo = parseInt(badgeElo.textContent);
+                    if (coincideFiltro) {
+                        const valElo = parseInt(badgeElo.textContent);
 
-                    if (!isNaN(valElo) && valElo > 0) {
-                        const puestoSpan = document.createElement('span');
-                        puestoSpan.classList.add('puesto-badge');
+                        if (!isNaN(valElo) && valElo > 0) {
+                            const puestoSpan = document.createElement('span');
+                            puestoSpan.classList.add('puesto-badge');
 
-                        if (contadorPuesto === 1) {
-                            puestoSpan.textContent = '1';
-                            puestoSpan.classList.add('top-1');
-                            badgeElo.classList.add('top-1-elo');
-                        } else if (contadorPuesto === 2) {
-                            puestoSpan.textContent = '2';
-                            puestoSpan.classList.add('top-2');
-                            badgeElo.classList.add('top-2-elo');
-                        } else if (contadorPuesto === 3) {
-                            puestoSpan.textContent = '3';
-                            puestoSpan.classList.add('top-3');
-                            badgeElo.classList.add('top-3-elo');
-                        } else if (contadorPuesto >= 4 && contadorPuesto <= 10) {
-                            puestoSpan.textContent = contadorPuesto;
-                            puestoSpan.classList.add('top-4-10');
-                        } else if (contadorPuesto >= 11) {
-                            puestoSpan.textContent = contadorPuesto;
-                            puestoSpan.classList.add('top-11-mas');
+                            if (contadorPuesto === 1) {
+                                puestoSpan.textContent = '1';
+                                puestoSpan.classList.add('top-1');
+                                badgeElo.classList.add('top-1-elo');
+                            } else if (contadorPuesto === 2) {
+                                puestoSpan.textContent = '2';
+                                puestoSpan.classList.add('top-2');
+                                badgeElo.classList.add('top-2-elo');
+                            } else if (contadorPuesto === 3) {
+                                puestoSpan.textContent = '3';
+                                puestoSpan.classList.add('top-3');
+                                badgeElo.classList.add('top-3-elo');
+                            } else if (contadorPuesto >= 4 && contadorPuesto <= 10) {
+                                puestoSpan.textContent = contadorPuesto;
+                                puestoSpan.classList.add('top-4-10');
+                            } else if (contadorPuesto >= 11) {
+                                puestoSpan.textContent = contadorPuesto;
+                                puestoSpan.classList.add('top-11-mas');
+                            }
+
+                            tdNombre.insertBefore(puestoSpan, tdNombre.firstChild);
+                            contadorPuesto++;
                         }
-
-                        tdNombre.insertBefore(puestoSpan, tdNombre.firstChild);
-                        contadorPuesto++;
                     }
                 });
 
-                const primeraFila = tbody.querySelector('tr');
-                if (primeraFila) {
-                    const maxElo = primeraFila.querySelector('.badge-elo')?.textContent;
-                    const maxNombre = primeraFila.querySelector('.nombre-texto')?.textContent.trim();
+                const primeraFilaVisible = filasTodas.find(f => f.style.display !== 'none');
+                if (primeraFilaVisible) {
+                    const maxElo = primeraFilaVisible.querySelector('.badge-elo')?.textContent;
+                    const maxNombre = primeraFilaVisible.querySelector('.nombre-texto')?.textContent.trim();
 
                     const maxDisplay = document.getElementById('max-elo-display');
                     const maxLabel = document.getElementById('max-elo-label');
@@ -840,6 +903,8 @@
                     if (maxLabel && maxNombre) maxLabel.textContent = `Máximo Elo (${maxNombre})`;
                 }
             }
+
+            document.getElementById('filtro-ano').addEventListener('change', ordenarTabla);
 
             filas.forEach((fila) => {
                 const username = fila.getAttribute('data-username');
