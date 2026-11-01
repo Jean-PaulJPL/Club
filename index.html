@@ -251,7 +251,7 @@
 
         .merito-img-container {
             width: 100%;
-            max-width: 650px;
+            max-width: 700px;
             margin: 1rem auto 0 auto;
             border-radius: 16px;
             overflow: hidden;
@@ -264,6 +264,50 @@
             height: auto;
             display: block;
         }
+
+        /* TABLA DE MERITO ESTILIZADA DE RESPALDO */
+        .tabla-merito {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .tabla-merito th {
+            background: #0a192f;
+            color: #ffffff;
+            padding: 10px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        .tabla-merito td {
+            padding: 8px 10px;
+            text-align: center;
+            border-bottom: 1px solid var(--gris-borde);
+        }
+
+        .tabla-merito tr:hover {
+            background-color: var(--azul-light);
+        }
+
+        .puesto-badge-mini {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.75rem;
+            color: white;
+        }
+
+        .puesto-1 { background: #ffc107; color: #5c4000; }
+        .puesto-2 { background: #94a3b8; color: #1e293b; }
+        .puesto-3 { background: #d97706; color: #ffffff; }
+        .puesto-num { background: #1e293b; color: #ffffff; }
 
         /* GRID NAVEGACIÓN ACCESOS RÁPIDOS */
         .cards-grid {
@@ -376,7 +420,38 @@
             <section class="merito-card">
                 <h2>🎖️ Orden de Mérito - Octubre 2026</h2>
                 <div class="merito-img-container">
-                    <img src="orden-merito-octubre-2026.jpg" alt="Orden de Mérito Octubre 2026 - P.E.P.">
+                    <img src="orden-merito-octubre-2026.jpg" alt="Orden de Mérito Octubre 2026" onerror="this.style.display='none'; document.getElementById('tabla-merito-fallback').style.display='table';">
+                    
+                    <table class="tabla-merito" id="tabla-merito-fallback" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>Puesto</th>
+                                <th>Nombre y Apellido</th>
+                                <th>Año</th>
+                                <th>ELO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><span class="puesto-badge-mini puesto-1">1</span></td><td><strong>Jean Paul</strong></td><td>3A</td><td><strong>1054</strong></td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-2">2</span></td><td><strong>Joaquín Arias</strong></td><td>3E</td><td><strong>894</strong></td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-3">3</span></td><td><strong>Alfredo Fortunic</strong></td><td>3A</td><td><strong>615</strong></td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">4</span></td><td>Miguel Reyna</td><td>3A</td><td>411</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">5</span></td><td>Diego Núñez</td><td>3A</td><td>358</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">6</span></td><td>Jose Incio</td><td>1D</td><td>353</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">7</span></td><td>Valentino Carrasco</td><td>3A</td><td>324</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">8</span></td><td>Leonel Chiguán</td><td>3B</td><td>319</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">9</span></td><td>Paolo Chávez</td><td>3A</td><td>313</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">10</span></td><td>Adrián Villegas</td><td>2A</td><td>300</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">11</span></td><td>Ariana Chupillón</td><td>3D</td><td>246</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">12</span></td><td>Mirko Pezoa</td><td>3D</td><td>224</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">13</span></td><td>Caetano Carranza</td><td>3C</td><td>222</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">14</span></td><td>Gianluca Crisóstomo</td><td>3D</td><td>183</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">15</span></td><td>Luana Chuquilín</td><td>3D</td><td>174</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">16</span></td><td>Grecia Salguero</td><td>PRE5</td><td>166</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">17</span></td><td>Nils Angeldonis</td><td>3E</td><td>165</td></tr>
+                            <tr><td><span class="puesto-badge-mini puesto-num">18</span></td><td>Ana Salinas</td><td>3A</td><td>151</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
 
