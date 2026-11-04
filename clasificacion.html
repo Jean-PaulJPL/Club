@@ -113,7 +113,6 @@
             text-align: center; 
         }
 
-        /* ESTILO BOTÓN DE REGISTRO */
         nav.sidebar-nav a.btn-sidebar-registro {
             margin-top: 8px;
             background: linear-gradient(135deg, #0d6efd, #0a58ca);
@@ -123,7 +122,6 @@
             box-shadow: 0 4px 10px rgba(13, 110, 253, 0.35);
         }
 
-        /* ESTILO TARJETA USUARIO ABAJO (ESTILO CHESS.COM) */
         .user-profile-box {
             display: flex;
             align-items: center;
@@ -168,7 +166,6 @@
             text-align: center; 
         }
 
-        /* CONTENIDO PRINCIPAL ADAPTADO */
         main.main-content {
             margin-left: var(--sidebar-width);
             flex-grow: 1;
@@ -181,7 +178,6 @@
             margin: 0 auto; 
         }
 
-        /* STATS GRID */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -230,7 +226,6 @@
             letter-spacing: 0.8px;
         }
 
-        /* CARD TABLA */
         .card { 
             background: var(--blanco); 
             padding: 2rem; 
@@ -258,7 +253,6 @@
             gap: 10px;
         }
 
-        /* TABLA CORREGIDA */
         .tabla-torneo {
             width: 100%;
             border-collapse: collapse;
@@ -276,7 +270,6 @@
             border: none;
         }
 
-        /* ESTILO DEL FILTRO EN EL ENCABEZADO */
         .th-jugador-container {
             display: inline-flex;
             align-items: center;
@@ -334,7 +327,6 @@
             gap: 10px;
         }
 
-        /* ESTILOS DE BADGES DE PUESTO */
         .puesto-badge {
             width: 26px;
             height: 26px;
@@ -382,7 +374,6 @@
             color: #ffffff;
         }
 
-        /* BADGES ELO */
         .badge-elo {
             background: linear-gradient(135deg, #0d6efd, #0056b3);
             color: white;
@@ -477,7 +468,6 @@
             <a href="registro.html" id="nav-register-btn" class="btn-sidebar-registro"><span class="icon">👤</span> Registrarse</a>
         </nav>
 
-        <!-- CAJA DE USUARIO ABAJO A LA IZQUIERDA (CHESS.COM STYLE) -->
         <div id="user-profile-container" style="display: none;">
             <div class="user-profile-box">
                 <div class="user-avatar" id="user-avatar-initial">U</div>
@@ -680,7 +670,7 @@
                             <td>-</td>
                             <td><a href="https://www.chess.com/member/paolo160100" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="pateatherians3000">
+                        <tr data-username="valent_vxyo">
                             <td class="jugador-nombre"><span class="nombre-texto">Valentino Carrasco</span></td>
                             <td><span class="badge-elo">...</span></td>
                             <td>0</td>
@@ -688,9 +678,9 @@
                             <td>1</td>
                             <td>1</td>
                             <td><span class="badge-grado">3A</span></td>
-                            <td><span class="apertura-tag">Apertura Italiana</span></td>
-                            <td><span class="apertura-tag">Defensa Francesa</span></td>
-                            <td><a href="https://www.chess.com/member/pateatherians3000" target="_blank" class="btn-perfil">Perfil</a></td>
+                            <td><span class="apertura-tag">Sistema Colle</span></td>
+                            <td><span class="apertura-tag">Defensa Siciliana</span></td>
+                            <td><a href="https://www.chess.com/member/valent_vxyo" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
                         <tr>
                             <td class="jugador-nombre"><span class="nombre-texto">Nicól Cabezudo</span></td>
@@ -783,19 +773,15 @@
         </div>
     </main>
 
-    <!-- JS -->
     <script>
-        // COMPROBAR SESIÓN DE USUARIO AL CARGAR
         window.addEventListener('DOMContentLoaded', () => {
             const userData = localStorage.getItem('pep_user');
             if (userData) {
                 const user = JSON.parse(userData);
 
-                // Ocultar opción "Registrarse"
                 const regBtn = document.getElementById('nav-register-btn');
                 if (regBtn) regBtn.style.display = 'none';
 
-                // Mostrar tarjeta de usuario en la parte inferior del menú
                 const profileContainer = document.getElementById('user-profile-container');
                 const avatarEl = document.getElementById('user-avatar-initial');
                 const nameEl = document.getElementById('user-display-name');
@@ -807,7 +793,6 @@
                 }
             }
 
-            // CARGA Y ORDENAMIENTO DE DATOS CHESS.COM
             const tbody = document.querySelector('#tabla-jugadores tbody');
             const filas = Array.from(tbody.querySelectorAll('tr'));
             let peticionesCompletadas = 0;
