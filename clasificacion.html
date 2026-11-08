@@ -255,7 +255,6 @@
             gap: 10px;
         }
 
-        /* CONTROLES Y FILTROS */
         .filtro-modalidad-container {
             display: flex;
             align-items: center;
@@ -526,7 +525,7 @@
                     <div class="stat-label" id="max-elo-label">Máximo Elo</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">27</div>
+                    <div class="stat-number" id="total-amistosos-display">24</div>
                     <div class="stat-label">Partidas Amistosas</div>
                 </div>
                 <div class="stat-card">
@@ -579,229 +578,303 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-username="haros460">
+                        <tr data-username="haros460"
+                            data-v-rapid="4" data-t-rapid="1" data-d-rapid="1" data-a-rapid="6"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Joaquín Arias</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td><strong>4</strong></td>
-                            <td><strong>1</strong></td>
-                            <td>1</td>
-                            <td>6</td>
+                            <td class="cell-v"><strong>4</strong></td>
+                            <td class="cell-t"><strong>1</strong></td>
+                            <td class="cell-d">1</td>
+                            <td class="cell-a">6</td>
                             <td><span class="badge-grado">3E</span></td>
                             <td><span class="apertura-tag">Apertura Italiana</span></td>
                             <td><span class="apertura-tag">Defensa Caro-Kann</span></td>
                             <td><a href="https://www.chess.com/member/haros460" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="jean-pauljll">
+
+                        <tr data-username="jean-pauljll"
+                            data-v-rapid="7" data-t-rapid="0" data-d-rapid="1" data-a-rapid="8"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Jean Paul</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td><strong>7</strong></td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>8</td>
+                            <td class="cell-v"><strong>7</strong></td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">1</td>
+                            <td class="cell-a">8</td>
                             <td><span class="badge-grado">3A</span></td>
                             <td><span class="apertura-tag">Sistema Londres</span></td>
                             <td><span class="apertura-tag">Defensa India de Rey</span></td>
                             <td><a href="https://www.chess.com/member/jean-pauljll" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="alfreditoelmascapito">
+
+                        <tr data-username="alfreditoelmascapito"
+                            data-v-rapid="4" data-t-rapid="0" data-d-rapid="2" data-a-rapid="6"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Alfredo Fortunic</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td><strong>4</strong></td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>6</td>
+                            <td class="cell-v"><strong>4</strong></td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">2</td>
+                            <td class="cell-a">6</td>
                             <td><span class="badge-grado">3A</span></td>
                             <td><span class="apertura-tag">Gambito de Dama</span></td>
                             <td><span class="apertura-tag">Gambito Englund</span></td>
                             <td><a href="https://www.chess.com/member/alfreditoelmascapito" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="miguel_r14">
+
+                        <tr data-username="miguel_r14"
+                            data-v-rapid="0" data-t-rapid="1" data-d-rapid="1" data-a-rapid="2"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Miguel Reyna</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td>0</td>
-                            <td><strong>1</strong></td>
-                            <td>1</td>
-                            <td>2</td>
+                            <td class="cell-v">0</td>
+                            <td class="cell-t"><strong>1</strong></td>
+                            <td class="cell-d">1</td>
+                            <td class="cell-a">2</td>
                             <td><span class="badge-grado">3A</span></td>
                             <td><span class="apertura-tag">Sistema Colle</span></td>
                             <td><span class="apertura-tag">Defensa Siciliana</span></td>
                             <td><a href="https://www.chess.com/member/miguel_r14" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="balatrofan">
+
+                        <tr data-username="balatrofan"
+                            data-v-rapid="1" data-t-rapid="0" data-d-rapid="0" data-a-rapid="1"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Diego Núñez</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td><strong>1</strong></td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>1</td>
+                            <td class="cell-v"><strong>1</strong></td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">0</td>
+                            <td class="cell-a">1</td>
                             <td><span class="badge-grado">3A</span></td>
                             <td><span class="apertura-tag">Sistema Colle</span></td>
                             <td><span class="apertura-tag">Defensa Siciliana</span></td>
                             <td><a href="https://www.chess.com/member/balatrofan" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="leochig">
+
+                        <tr data-username="leochig"
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="0" data-a-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Leonel Chiguán</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td class="cell-v">0</td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">0</td>
+                            <td class="cell-a">0</td>
                             <td><span class="badge-grado">3B</span></td>
                             <td>-</td>
                             <td>-</td>
                             <td><a href="https://www.chess.com/member/leochig" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="josea2013">
+
+                        <tr data-username="josea2013"
+                            data-v-rapid="1" data-t-rapid="0" data-d-rapid="1" data-a-rapid="2"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Jose Incio</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td><strong>1</strong></td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>2</td>
+                            <td class="cell-v"><strong>1</strong></td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">1</td>
+                            <td class="cell-a">2</td>
                             <td><span class="badge-grado">1D</span></td>
                             <td>-</td>
                             <td>-</td>
                             <td><a href="https://www.chess.com/member/josea2013" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="mirkocamus">
+
+                        <tr data-username="mirkocamus"
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="3" data-a-rapid="3"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Mirko Pezoa</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>3</td>
-                            <td>3</td>
+                            <td class="cell-v">0</td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">3</td>
+                            <td class="cell-a">3</td>
                             <td><span class="badge-grado">3D</span></td>
                             <td>-</td>
                             <td>-</td>
                             <td><a href="https://www.chess.com/member/mirkocamus" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="rojiari">
+
+                        <tr data-username="rojiari"
+                            data-v-rapid="3" data-t-rapid="0" data-d-rapid="4" data-a-rapid="7"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="2" data-t-bullet="0" data-d-bullet="0" data-a-bullet="2">
                             <td class="jugador-nombre"><span class="nombre-texto">Ariana Chupillón</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td><strong>5</strong></td>
-                            <td>0</td>
-                            <td>4</td>
-                            <td>9</td>
+                            <td class="cell-v"><strong>3</strong></td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">4</td>
+                            <td class="cell-a">7</td>
                             <td><span class="badge-grado">3D</span></td>
                             <td>-</td>
                             <td>-</td>
                             <td><a href="https://www.chess.com/member/rojiari" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="nils1714">
+
+                        <tr data-username="nils1714"
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="2" data-a-rapid="2"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Nils Angeldonis</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>2</td>
+                            <td class="cell-v">0</td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">2</td>
+                            <td class="cell-a">2</td>
                             <td><span class="badge-grado">3E</span></td>
                             <td>-</td>
                             <td>-</td>
                             <td><a href="https://www.chess.com/member/nils1714" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="paolo160100">
+
+                        <tr data-username="paolo160100"
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="2" data-a-rapid="2"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Paolo Chávez</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>2</td>
+                            <td class="cell-v">0</td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">2</td>
+                            <td class="cell-a">2</td>
                             <td><span class="badge-grado">3A</span></td>
                             <td>-</td>
                             <td>-</td>
                             <td><a href="https://www.chess.com/member/paolo160100" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="valent_vxyo">
+
+                        <tr data-username="valent_vxyo"
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="1" data-a-rapid="1"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Valentino Carrasco</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>1</td>
+                            <td class="cell-v">0</td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">1</td>
+                            <td class="cell-a">1</td>
                             <td><span class="badge-grado">3A</span></td>
                             <td><span class="apertura-tag">Sistema Colle</span></td>
                             <td><span class="apertura-tag">Defensa Siciliana</span></td>
                             <td><a href="https://www.chess.com/member/valent_vxyo" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr>
+
+                        <tr data-v-rapid="0" data-t-rapid="0" data-d-rapid="0" data-a-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Nicól Cabezudo</span></td>
                             <td><span class="badge-elo">N/A</span></td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td class="cell-v">0</td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">0</td>
+                            <td class="cell-a">0</td>
                             <td><span class="badge-grado">3A</span></td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
                         </tr>
-                        <tr data-username="pokemonfanchess">
+
+                        <tr data-username="pokemonfanchess"
+                            data-v-rapid="2" data-t-rapid="0" data-d-rapid="0" data-a-rapid="2"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Caetano Carranza</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td><strong>2</strong></td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>2</td>
+                            <td class="cell-v"><strong>2</strong></td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">0</td>
+                            <td class="cell-a">2</td>
                             <td><span class="badge-grado">3C</span></td>
                             <td>-</td>
                             <td>-</td>
                             <td><a href="https://www.chess.com/member/pokemonfanchess" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="jrzista">
+
+                        <tr data-username="jrzista"
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="0" data-a-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Luana Chuquilín</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td class="cell-v">0</td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">0</td>
+                            <td class="cell-a">0</td>
                             <td><span class="badge-grado">3D</span></td>
                             <td>-</td>
                             <td>-</td>
                             <td><a href="https://www.chess.com/member/jrzista" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="gi4n128">
+
+                        <tr data-username="gi4n128"
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="1" data-a-rapid="1"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Gianluca Crisóstomo</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>1</td>
+                            <td class="cell-v">0</td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">1</td>
+                            <td class="cell-a">1</td>
                             <td><span class="badge-grado">3D</span></td>
                             <td><span class="apertura-tag">Apertura Ponziani</span></td>
                             <td><span class="apertura-tag">Defensa de los dos caballos</span></td>
                             <td><a href="https://www.chess.com/member/gi4n128" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="anneuusss">
+
+                        <tr data-username="anneuusss"
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="2" data-a-rapid="2"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Ana Salinas</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>2</td>
-                            <td>2</td>
+                            <td class="cell-v">0</td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">2</td>
+                            <td class="cell-a">2</td>
                             <td><span class="badge-grado">3A</span></td>
                             <td>-</td>
                             <td>-</td>
                             <td><a href="https://www.chess.com/member/anneuusss" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="adri-v-m">
+
+                        <tr data-username="adri-v-m"
+                            data-v-rapid="2" data-t-rapid="0" data-d-rapid="0" data-a-rapid="2"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
                             <td class="jugador-nombre"><span class="nombre-texto">Adrián Villegas</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td><strong>2</strong></td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>2</td>
+                            <td class="cell-v"><strong>2</strong></td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">0</td>
+                            <td class="cell-a">2</td>
                             <td><span class="badge-grado">2A</span></td>
                             <td>-</td>
                             <td><span class="apertura-tag">Defensa India de Rey</span></td>
                             <td><a href="https://www.chess.com/member/adri-v-m" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
-                        <tr data-username="grecia_helenia">
+
+                        <tr data-username="grecia_helenia"
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="3" data-a-rapid="3"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="2" data-a-bullet="2">
                             <td class="jugador-nombre"><span class="nombre-texto">Grecia Salguero</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>5</td>
-                            <td>5</td>
+                            <td class="cell-v">0</td>
+                            <td class="cell-t">0</td>
+                            <td class="cell-d">3</td>
+                            <td class="cell-a">3</td>
                             <td><span class="badge-grado">PRE5</span></td>
                             <td>-</td>
                             <td>-</td>
@@ -838,27 +911,52 @@
             const filas = Array.from(tbody.querySelectorAll('tr'));
             const datosJugadores = {};
 
-            function actualizarEloEnTabla(modalidad) {
+            function actualizarDatosModalidad(modalidadKey) {
+                let sufijo = 'rapid';
+                if (modalidadKey === 'chess_blitz') sufijo = 'blitz';
+                if (modalidadKey === 'chess_bullet') sufijo = 'bullet';
+
+                let acumuladoAmistosos = 0;
+
                 filas.forEach((fila) => {
                     const username = fila.getAttribute('data-username');
                     const eloBadge = fila.querySelector('.badge-elo');
 
-                    if (!eloBadge) return;
+                    const cellV = fila.querySelector('.cell-v');
+                    const cellT = fila.querySelector('.cell-t');
+                    const cellD = fila.querySelector('.cell-d');
+                    const cellA = fila.querySelector('.cell-a');
 
-                    if (!username || !datosJugadores[username]) {
-                        if (username) eloBadge.textContent = 'N/A';
-                        return;
+                    const valV = fila.getAttribute(`data-v-${sufijo}`) || '0';
+                    const valT = fila.getAttribute(`data-t-${sufijo}`) || '0';
+                    const valD = fila.getAttribute(`data-d-${sufijo}`) || '0';
+                    const valA = fila.getAttribute(`data-a-${sufijo}`) || '0';
+
+                    if (cellV) cellV.innerHTML = parseInt(valV) > 0 ? `<strong>${valV}</strong>` : '0';
+                    if (cellT) cellT.innerHTML = parseInt(valT) > 0 ? `<strong>${valT}</strong>` : '0';
+                    if (cellD) cellD.textContent = valD;
+                    if (cellA) cellA.textContent = valA;
+
+                    acumuladoAmistosos += parseInt(valA);
+
+                    if (eloBadge) {
+                        if (!username || !datosJugadores[username]) {
+                            if (username) eloBadge.textContent = 'N/A';
+                        } else {
+                            const stats = datosJugadores[username];
+                            let elo = 'Sin Rk';
+                            if (stats[modalidadKey] && stats[modalidadKey].last) {
+                                elo = stats[modalidadKey].last.rating;
+                            }
+                            eloBadge.textContent = elo;
+                        }
                     }
-
-                    const stats = datosJugadores[username];
-                    let elo = 'Sin Rk';
-
-                    if (stats[modalidad] && stats[modalidad].last) {
-                        elo = stats[modalidad].last.rating;
-                    }
-
-                    eloBadge.textContent = elo;
                 });
+
+                const displayAmistosos = document.getElementById('total-amistosos-display');
+                if (displayAmistosos) {
+                    displayAmistosos.textContent = acumuladoAmistosos;
+                }
 
                 ordenarTabla();
             }
@@ -957,7 +1055,7 @@
             document.getElementById('filtro-ano').addEventListener('change', ordenarTabla);
             
             document.getElementById('select-modalidad').addEventListener('change', (e) => {
-                actualizarEloEnTabla(e.target.value);
+                actualizarDatosModalidad(e.target.value);
             });
 
             let peticionesCompletadas = 0;
@@ -980,7 +1078,7 @@
                     .finally(() => {
                         peticionesCompletadas++;
                         if (peticionesCompletadas === filasConUser.length) {
-                            actualizarEloEnTabla(document.getElementById('select-modalidad').value);
+                            actualizarDatosModalidad(document.getElementById('select-modalidad').value);
                         }
                     });
             });
