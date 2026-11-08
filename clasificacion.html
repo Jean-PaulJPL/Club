@@ -239,6 +239,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
             border-bottom: 2px solid var(--gris-fondo);
@@ -251,6 +253,35 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        /* CONTROLES Y FILTROS */
+        .filtro-modalidad-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gris-fondo);
+            padding: 6px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--gris-borde);
+        }
+
+        .filtro-modalidad-container label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--azul-oscuro);
+        }
+
+        .select-modalidad {
+            background: var(--blanco);
+            color: var(--texto-oscuro);
+            border: 1px solid var(--gris-borde);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            outline: none;
+            cursor: pointer;
         }
 
         .tabla-torneo {
@@ -495,7 +526,7 @@
                     <div class="stat-label" id="max-elo-label">Máximo Elo</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">21</div>
+                    <div class="stat-number">27</div>
                     <div class="stat-label">Partidas Amistosas</div>
                 </div>
                 <div class="stat-card">
@@ -508,6 +539,16 @@
             <section class="card">
                 <div class="card-header">
                     <h2>♟️ Tabla General de Jugadores - SDA</h2>
+                    
+                    <!-- FILTRO DE MODALIDAD -->
+                    <div class="filtro-modalidad-container">
+                        <label for="select-modalidad">Modalidad:</label>
+                        <select id="select-modalidad" class="select-modalidad">
+                            <option value="chess_rapid" selected>Rápida</option>
+                            <option value="chess_blitz">Blitz</option>
+                            <option value="chess_bullet">Bala</option>
+                        </select>
+                    </div>
                 </div>
 
                 <table class="tabla-torneo" id="tabla-jugadores">
@@ -637,10 +678,10 @@
                         <tr data-username="rojiari">
                             <td class="jugador-nombre"><span class="nombre-texto">Ariana Chupillón</span></td>
                             <td><span class="badge-elo">...</span></td>
-                            <td><strong>2</strong></td>
+                            <td><strong>5</strong></td>
                             <td>0</td>
                             <td>4</td>
-                            <td>6</td>
+                            <td>9</td>
                             <td><span class="badge-grado">3D</span></td>
                             <td>-</td>
                             <td>-</td>
@@ -759,8 +800,8 @@
                             <td><span class="badge-elo">...</span></td>
                             <td>0</td>
                             <td>0</td>
-                            <td>2</td>
-                            <td>2</td>
+                            <td>5</td>
+                            <td>5</td>
                             <td><span class="badge-grado">PRE5</span></td>
                             <td>-</td>
                             <td>-</td>
@@ -795,8 +836,32 @@
 
             const tbody = document.querySelector('#tabla-jugadores tbody');
             const filas = Array.from(tbody.querySelectorAll('tr'));
-            let peticionesCompletadas = 0;
-            const totalPeticiones = filas.filter(f => f.hasAttribute('data-username')).length;
+            const datosJugadores = {};
+
+            function actualizarEloEnTabla(modalidad) {
+                filas.forEach((fila) => {
+                    const username = fila.getAttribute('data-username');
+                    const eloBadge = fila.querySelector('.badge-elo');
+
+                    if (!eloBadge) return;
+
+                    if (!username || !datosJugadores[username]) {
+                        if (username) eloBadge.textContent = 'N/A';
+                        return;
+                    }
+
+                    const stats = datosJugadores[username];
+                    let elo = 'Sin Rk';
+
+                    if (stats[modalidad] && stats[modalidad].last) {
+                        elo = stats[modalidad].last.rating;
+                    }
+
+                    eloBadge.textContent = elo;
+                });
+
+                ordenarTabla();
+            }
 
             function ordenarTabla() {
                 const filtroValor = document.getElementById('filtro-ano').value;
@@ -890,12 +955,16 @@
             }
 
             document.getElementById('filtro-ano').addEventListener('change', ordenarTabla);
+            
+            document.getElementById('select-modalidad').addEventListener('change', (e) => {
+                actualizarEloEnTabla(e.target.value);
+            });
 
-            filas.forEach((fila) => {
+            let peticionesCompletadas = 0;
+            const filasConUser = filas.filter(f => f.hasAttribute('data-username'));
+
+            filasConUser.forEach((fila) => {
                 const username = fila.getAttribute('data-username');
-                const eloBadge = fila.querySelector('.badge-elo');
-
-                if (!username || !eloBadge) return;
 
                 fetch(`https://api.chess.com/pub/player/${username}/stats`)
                     .then(response => {
@@ -903,24 +972,15 @@
                         return response.json();
                     })
                     .then(data => {
-                        let elo = null;
-                        if (data.chess_rapid && data.chess_rapid.last) {
-                            elo = data.chess_rapid.last.rating;
-                        } else if (data.chess_blitz && data.chess_blitz.last) {
-                            elo = data.chess_blitz.last.rating;
-                        } else if (data.chess_bullet && data.chess_bullet.last) {
-                            elo = data.chess_bullet.last.rating;
-                        }
-
-                        eloBadge.textContent = elo !== null ? elo : 'Sin Rk';
+                        datosJugadores[username] = data;
                     })
                     .catch(() => {
-                        eloBadge.textContent = 'N/A';
+                        datosJugadores[username] = null;
                     })
                     .finally(() => {
                         peticionesCompletadas++;
-                        if (peticionesCompletadas === totalPeticiones) {
-                            ordenarTabla();
+                        if (peticionesCompletadas === filasConUser.length) {
+                            actualizarEloEnTabla(document.getElementById('select-modalidad').value);
                         }
                     });
             });
