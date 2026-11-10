@@ -21,6 +21,7 @@
             --gris-borde: #e2e8f0;
             --texto-oscuro: #0f172a;
             --sidebar-width: 175px;
+            --brillante-cyan: #00e5ff;
         }
 
         * { 
@@ -354,7 +355,22 @@
             font-size: 0.98rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .badge-brilliantes {
+            background: #0a192f;
+            color: #00e5ff;
+            border: 1px solid #00e5ff;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            box-shadow: 0 0 6px rgba(0, 229, 255, 0.3);
         }
 
         .puesto-badge {
@@ -579,10 +595,13 @@
                     </thead>
                     <tbody>
                         <tr data-username="haros460"
-                            data-v-rapid="4" data-t-rapid="1" data-d-rapid="1" data-a-rapid="6"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Joaquín Arias</span></td>
+                            data-v-rapid="4" data-t-rapid="1" data-d-rapid="1" data-a-rapid="6" data-b-rapid="1"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Joaquín Arias</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">1</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v"><strong>4</strong></td>
                             <td class="cell-t"><strong>1</strong></td>
@@ -595,10 +614,13 @@
                         </tr>
 
                         <tr data-username="jean-pauljll"
-                            data-v-rapid="7" data-t-rapid="0" data-d-rapid="1" data-a-rapid="8"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Jean Paul</span></td>
+                            data-v-rapid="7" data-t-rapid="0" data-d-rapid="1" data-a-rapid="8" data-b-rapid="2"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Jean Paul</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">2</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v"><strong>7</strong></td>
                             <td class="cell-t">0</td>
@@ -611,10 +633,13 @@
                         </tr>
 
                         <tr data-username="alfreditoelmascapito"
-                            data-v-rapid="4" data-t-rapid="0" data-d-rapid="2" data-a-rapid="6"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Alfredo Fortunic</span></td>
+                            data-v-rapid="4" data-t-rapid="0" data-d-rapid="2" data-a-rapid="6" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Alfredo Fortunic</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v"><strong>4</strong></td>
                             <td class="cell-t">0</td>
@@ -627,10 +652,13 @@
                         </tr>
 
                         <tr data-username="miguel_r14"
-                            data-v-rapid="0" data-t-rapid="1" data-d-rapid="1" data-a-rapid="2"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Miguel Reyna</span></td>
+                            data-v-rapid="0" data-t-rapid="1" data-d-rapid="1" data-a-rapid="2" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Miguel Reyna</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v">0</td>
                             <td class="cell-t"><strong>1</strong></td>
@@ -643,10 +671,13 @@
                         </tr>
 
                         <tr data-username="balatrofan"
-                            data-v-rapid="1" data-t-rapid="0" data-d-rapid="0" data-a-rapid="1"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Diego Núñez</span></td>
+                            data-v-rapid="1" data-t-rapid="0" data-d-rapid="0" data-a-rapid="1" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Diego Núñez</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v"><strong>1</strong></td>
                             <td class="cell-t">0</td>
@@ -659,10 +690,13 @@
                         </tr>
 
                         <tr data-username="leochig"
-                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="0" data-a-rapid="0"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Leonel Chiguán</span></td>
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="0" data-a-rapid="0" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Leonel Chiguán</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v">0</td>
                             <td class="cell-t">0</td>
@@ -675,10 +709,13 @@
                         </tr>
 
                         <tr data-username="josea2013"
-                            data-v-rapid="1" data-t-rapid="0" data-d-rapid="1" data-a-rapid="2"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Jose Incio</span></td>
+                            data-v-rapid="1" data-t-rapid="0" data-d-rapid="1" data-a-rapid="2" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Jose Incio</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v"><strong>1</strong></td>
                             <td class="cell-t">0</td>
@@ -691,10 +728,13 @@
                         </tr>
 
                         <tr data-username="mirkocamus"
-                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="3" data-a-rapid="3"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Mirko Pezoa</span></td>
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="3" data-a-rapid="3" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Mirko Pezoa</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v">0</td>
                             <td class="cell-t">0</td>
@@ -707,10 +747,13 @@
                         </tr>
 
                         <tr data-username="rojiari"
-                            data-v-rapid="3" data-t-rapid="0" data-d-rapid="4" data-a-rapid="7"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="2" data-t-bullet="0" data-d-bullet="0" data-a-bullet="2">
-                            <td class="jugador-nombre"><span class="nombre-texto">Ariana Chupillón</span></td>
+                            data-v-rapid="3" data-t-rapid="0" data-d-rapid="4" data-a-rapid="7" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="2" data-t-bullet="0" data-d-bullet="0" data-a-bullet="2" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Ariana Chupillón</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v"><strong>3</strong></td>
                             <td class="cell-t">0</td>
@@ -723,10 +766,13 @@
                         </tr>
 
                         <tr data-username="nils1714"
-                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="2" data-a-rapid="2"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Nils Angeldonis</span></td>
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="2" data-a-rapid="2" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Nils Angeldonis</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v">0</td>
                             <td class="cell-t">0</td>
@@ -739,10 +785,13 @@
                         </tr>
 
                         <tr data-username="paolo160100"
-                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="2" data-a-rapid="2"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Paolo Chávez</span></td>
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="2" data-a-rapid="2" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Paolo Chávez</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v">0</td>
                             <td class="cell-t">0</td>
@@ -755,10 +804,13 @@
                         </tr>
 
                         <tr data-username="valent_vxyo"
-                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="1" data-a-rapid="1"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Valentino Carrasco</span></td>
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="1" data-a-rapid="1" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Valentino Carrasco</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v">0</td>
                             <td class="cell-t">0</td>
@@ -770,10 +822,13 @@
                             <td><a href="https://www.chess.com/member/valent_vxyo" target="_blank" class="btn-perfil">Perfil</a></td>
                         </tr>
 
-                        <tr data-v-rapid="0" data-t-rapid="0" data-d-rapid="0" data-a-rapid="0"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Nicól Cabezudo</span></td>
+                        <tr data-v-rapid="0" data-t-rapid="0" data-d-rapid="0" data-a-rapid="0" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Nicól Cabezudo</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">N/A</span></td>
                             <td class="cell-v">0</td>
                             <td class="cell-t">0</td>
@@ -786,10 +841,13 @@
                         </tr>
 
                         <tr data-username="pokemonfanchess"
-                            data-v-rapid="2" data-t-rapid="0" data-d-rapid="0" data-a-rapid="2"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Caetano Carranza</span></td>
+                            data-v-rapid="2" data-t-rapid="0" data-d-rapid="0" data-a-rapid="2" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Caetano Carranza</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v"><strong>2</strong></td>
                             <td class="cell-t">0</td>
@@ -802,10 +860,13 @@
                         </tr>
 
                         <tr data-username="jrzista"
-                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="0" data-a-rapid="0"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Luana Chuquilín</span></td>
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="0" data-a-rapid="0" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Luana Chuquilín</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v">0</td>
                             <td class="cell-t">0</td>
@@ -818,10 +879,13 @@
                         </tr>
 
                         <tr data-username="gi4n128"
-                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="1" data-a-rapid="1"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Gianluca Crisóstomo</span></td>
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="1" data-a-rapid="1" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Gianluca Crisóstomo</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v">0</td>
                             <td class="cell-t">0</td>
@@ -834,10 +898,13 @@
                         </tr>
 
                         <tr data-username="anneuusss"
-                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="2" data-a-rapid="2"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Ana Salinas</span></td>
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="2" data-a-rapid="2" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Ana Salinas</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v">0</td>
                             <td class="cell-t">0</td>
@@ -850,10 +917,13 @@
                         </tr>
 
                         <tr data-username="adri-v-m"
-                            data-v-rapid="2" data-t-rapid="0" data-d-rapid="0" data-a-rapid="2"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0">
-                            <td class="jugador-nombre"><span class="nombre-texto">Adrián Villegas</span></td>
+                            data-v-rapid="2" data-t-rapid="0" data-d-rapid="0" data-a-rapid="2" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="0" data-a-bullet="0" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Adrián Villegas</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v"><strong>2</strong></td>
                             <td class="cell-t">0</td>
@@ -866,10 +936,13 @@
                         </tr>
 
                         <tr data-username="grecia_helenia"
-                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="3" data-a-rapid="3"
-                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0"
-                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="2" data-a-bullet="2">
-                            <td class="jugador-nombre"><span class="nombre-texto">Grecia Salguero</span></td>
+                            data-v-rapid="0" data-t-rapid="0" data-d-rapid="3" data-a-rapid="3" data-b-rapid="0"
+                            data-v-blitz="0" data-t-blitz="0" data-d-blitz="0" data-a-blitz="0" data-b-blitz="0"
+                            data-v-bullet="0" data-t-bullet="0" data-d-bullet="2" data-a-bullet="2" data-b-bullet="0">
+                            <td class="jugador-nombre">
+                                <span class="nombre-texto">Grecia Salguero</span>
+                                <span class="badge-brilliantes">!! <span class="val-brillantes">0</span></span>
+                            </td>
                             <td><span class="badge-elo">...</span></td>
                             <td class="cell-v">0</td>
                             <td class="cell-t">0</td>
@@ -926,16 +999,19 @@
                     const cellT = fila.querySelector('.cell-t');
                     const cellD = fila.querySelector('.cell-d');
                     const cellA = fila.querySelector('.cell-a');
+                    const spanBrillantes = fila.querySelector('.val-brillantes');
 
                     const valV = fila.getAttribute(`data-v-${sufijo}`) || '0';
                     const valT = fila.getAttribute(`data-t-${sufijo}`) || '0';
                     const valD = fila.getAttribute(`data-d-${sufijo}`) || '0';
                     const valA = fila.getAttribute(`data-a-${sufijo}`) || '0';
+                    const valB = fila.getAttribute(`data-b-${sufijo}`) || '0';
 
                     if (cellV) cellV.innerHTML = parseInt(valV) > 0 ? `<strong>${valV}</strong>` : '0';
                     if (cellT) cellT.innerHTML = parseInt(valT) > 0 ? `<strong>${valT}</strong>` : '0';
                     if (cellD) cellD.textContent = valD;
                     if (cellA) cellA.textContent = valA;
+                    if (spanBrillantes) spanBrillantes.textContent = valB;
 
                     acumuladoAmistosos += parseInt(valA);
 
